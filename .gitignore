@@ -4,24 +4,23 @@
 __pycache__/
 *.pyc
 
+# SQLite
+*.sqlite3
 
 # Custom gitignore file for esite
 
 # Audios
-AUDIO/
 *.ogg
 *.mp3
 
 # Images
-PIC/
 *.jpg
 *.png
 *.gif
 *.svg
 
 # Fonts
-FONTS/
 *.ttf
 
 # Brackets
-.brackets.json
+brackets.json
