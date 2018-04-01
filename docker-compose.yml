@@ -1,36 +1,54 @@
-version: '2'
+version: '3'
 
 services:
-  db:
-    environment:
-      POSTGRES_DB: ${POSTGRES_DB}
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-    restart: always
-    image: postgres:9.6
-    expose:
-      - "5432"
-  redis:
-    restart: always
-    image: redis:3.0
-    expose:
-      - "6379"
-  elasticsearch:
-    image: elasticsearch:2.3
-    restart: always
-    expose:
-      - "9200"
-  app:
-    environment:
-      DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY}
-      DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db/${POSTGRES_DB}
-      CACHE_URL: redis://redis
-      ELASTICSEARCH_ENDPOINT: elasticsearch
-    build: ./
-    ports:
-      - "8000:8000"
-    depends_on:
-      - db
-      - redis
-      - elasticsearch
-    restart: always
+
+################################################################################
+# PostgreSQL
+################################################################################
+
+    db:
+        image: postgres:9.6
+        environment:
+            - POSTGRES_DB=app_db
+            - POSTGRES_USER=app_user
+            - POSTGRES_PASSWORD=changeme
+        restart: always
+
+################################################################################
+# redis
+################################################################################
+
+    redis:
+        image: redis:3.0
+        restart: always
+
+################################################################################
+# elasticsearch
+################################################################################
+
+    elasticsearch:
+        image: elasticsearch:2.3
+        restart: always
+
+################################################################################
+# esite app
+################################################################################
+
+    app:
+        image: kleberbaum/esite
+        environment:
+            - DJANGO_SECRET_KEY=changeme
+            - DATABASE_URL=postgres://app_user:changeme@db/app_db
+            - CACHE_URL=redis://redis
+            - ELASTICSEARCH_ENDPOINT=elasticsearch
+        links:
+            - db:db
+            - redis:redis
+            - elasticsearch:elasticsearch
+        ports:
+            - 50000:8000/tcp
+        depends_on:
+            - db
+            - redis
+            - elasticsearch
+        restart: always
