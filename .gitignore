@@ -22,5 +22,8 @@ __pycache__/
 # Fonts
 *.ttf
 
+# Docker
+.env
+
 # Brackets
 brackets.json

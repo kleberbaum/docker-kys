@@ -1,0 +1,36 @@
+version: '2'
+
+services:
+  db:
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    restart: always
+    image: postgres:9.6
+    expose:
+      - "5432"
+  redis:
+    restart: always
+    image: redis:3.0
+    expose:
+      - "6379"
+  elasticsearch:
+    image: elasticsearch:2.3
+    restart: always
+    expose:
+      - "9200"
+  app:
+    environment:
+      DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY}
+      DATABASE_URL: postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db/${POSTGRES_DB}
+      CACHE_URL: redis://redis
+      ELASTICSEARCH_ENDPOINT: elasticsearch
+    build: ./
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      - redis
+      - elasticsearch
+    restart: always
