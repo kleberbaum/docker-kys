@@ -20,7 +20,7 @@ ENV UWSGI_UID=1000 UWSGI_GID=2000 \
 
 WORKDIR /code/
 
-# pre installation required files
+# pre installation requirements XD
 ADD requirements/ /requirements/
 
 RUN set -e && \
@@ -55,7 +55,7 @@ RUN set -e && \
 	&& /venv/bin/pip install -U pip \
 	\
 	&& LIBRARY_PATH=/lib:/usr/lib /bin/sh -c "/venv/bin/pip install -r \
-		 /requirements/production.txt" \
+		/requirements/production.txt" \
 	\
 	&& runDeps="$( \
 			scanelf --needed --nobanner --recursive /venv \
@@ -89,7 +89,7 @@ RUN chown -R 1000:2000 /code/esite/media
 ENTRYPOINT ["/sbin/tini", "--", "/run.sh"]
 
 CMD ["/venv/bin/uwsgi", "--http-auto-chunked", \
-						"--http-keepalive", \
-						"--static-map", \
-						"/media/=/code/esite/media/" \
+			"--http-keepalive", \
+			"--static-map", \
+			"/media/=/code/esite/media/" \
 ]
