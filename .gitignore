@@ -24,6 +24,3 @@ __pycache__/
 
 # Docker
 .env
-
-# Brackets
-brackets.json
