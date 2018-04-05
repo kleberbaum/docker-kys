@@ -2,6 +2,7 @@
 {% load wagtailimages_tags %}
 {% block sharingan %}
 <article id="projekte" class="sharingan">
+  {% if a.value.sharingan.show_projects %}
   <section id="ts3.party" class="sharingan-s sharingan-1">
     <div class="c">
       <div class="iris iris-1">
@@ -35,8 +36,10 @@
       </div>
       <div class="lorem">
         {{ a.value.sharingan.sharingan_3|richtext }}
+      </div>
     </div>
   </section>
+  {% endif %}
   {% if a.value.sharingan.show_team %}
   <section id="theteam" class="sharingan-s theteam-s">
     <header class="nyan">
@@ -51,18 +54,18 @@
     </header>
     <article class="members">
       {% for member in a.value.sharingan.team %}
-        <div class="member">
-          <div class="pic">
-            {% image member.value.pic original alt="suppi" %}
-          </div>
-          <div class="info">
-            <h3>{{ member.value.name }}</h3>
-            <p>{{ member.value.description }}</p>
-          </div>
+      <div class="member">
+        <div class="pic">
+          {% image member.value.pic original alt="suppi" %}
         </div>
+        <div class="info">
+          <h3>{{ member.value.name }}</h3>
+          <p>{{ member.value.description }}</p>
+        </div>
+      </div>
       {% endfor %}
     </article>
   </section>
-{% endif %}
+  {% endif %}
 </article>
 {% endblock %}
