@@ -40,11 +40,11 @@
     </div>
   </section>
   {% endif %}
-  {% if a.value.sharingan.show_team %}
+  {% if a.value.team.show_team %}
   <section id="theteam" class="sharingan-s theteam-s">
     <header class="nyan">
       <a class="nyanlink" href="https://www.youtube.com/watch?v=QH2-TGUlwu4" target="_blank">
-        <h3>{{ a.value.sharingan.nyan_titel }}</h3>
+        <h3>{{ a.value.team.nyan_titel }}</h3>
         <img src="https://erebos.xyz/PIC/nyan.gif" alt="nyan">
       </a>
       <audio id="nyanaudio" preload="auto">
@@ -52,19 +52,30 @@
         <source src="https://erebos.xyz/AUDIO/party.ogg" type="audio/ogg">
       </audio>
     </header>
-    <article class="members">
-      {% for member in a.value.sharingan.team %}
-      <div class="member">
-        <div class="pic">
-          {% image member.value.pic original alt="suppi" %}
+    <div class="members">
+      <div class="mrow">
+        {% for member in a.value.team.members %}
+        <div class="member">
+          <div class="profile">
+            <div class="pic">
+              {% image member.value.pic fill-200x200 alt=member.value.name %}
+            </div>
+            <div class="hollow">
+              <div class="info">
+                <div class="ifront">
+                  {% image member.value.pic fill-200x200 alt=member.value.name %}
+                </div>
+                <div class="iback">
+                  <h3>{{ member.value.name }}</h3>
+                  <p>{{ member.value.description }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="info">
-          <h3>{{ member.value.name }}</h3>
-          <p>{{ member.value.description }}</p>
-        </div>
+        {% endfor %}
       </div>
-      {% endfor %}
-    </article>
+    </div>
   </section>
   {% endif %}
 </article>

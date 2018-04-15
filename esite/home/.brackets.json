@@ -11,7 +11,7 @@
                 "sourceComments": false,
                 "outputStyle": "nested"
             },
-            "linting.collapsed": false,
+            "linting.collapsed": true,
             "useTabChar": false,
             "tabSize": 4,
             "spaceUnits": 2,

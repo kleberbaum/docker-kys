@@ -1,24 +1,25 @@
-/* CSS-File */
 /*var********************************************************************************************************************/
 /*viewport***************************************************************************************************************/
 @media only screen and (min-width: 1440px) {
   article {
-    transform-origin: top;
+    overflow: hidden;
+    transform-origin: bottom;
     transform: rotateX(90deg);
-    height: 0px;
+    max-height: 0px;
     animation: displaynone 700ms ease-in-out forwards 1400ms; }
-  article:not(.about) section:not(.animatedBackground) {
-    opacity: 0;
-    animation: fadein 700ms ease-in-out forwards 2100ms; }
+    article:not(.about) section:not(.animatedBackground) {
+      opacity: 0;
+      animation: fadein 700ms ease-in-out forwards 2100ms; }
   footer {
+    overflow: hidden;
     transform-origin: top;
-    height: 0px;
+    max-height: 0px;
     transform: rotateX(90deg);
     opacity: 0;
     animation: displaynone 700ms ease-in forwards 1400ms; }
-  footer * {
-    opacity: 0;
-    animation: fadein 700ms ease-in-out forwards 2100ms; } }
+    footer * {
+      opacity: 0;
+      animation: fadein 700ms ease-in-out forwards 2100ms; } }
 
 /*font*******************************************************************************************************************/
 h1 {
@@ -82,7 +83,6 @@ blink {
   padding: 0px; }
 
 html {
-  min-width: 804px;
   padding: 0px;
   margin: 0px; }
 
@@ -98,8 +98,6 @@ body {
 section {
   overflow: hidden;
   top: 0px;
-  display: flex;
-  width: 100%;
   min-height: 666px; }
 
 footer {
@@ -129,7 +127,7 @@ footer {
     transform: rotateX(90deg); }
   100% {
     opacity: 1;
-    height: 100%;
+    max-height: 100%;
     transform: rotateX(0deg); } }
 
 @keyframes rolldown {
@@ -203,18 +201,18 @@ footer {
     position: fixed;
     transform-origin: top;
     animation: displaynone 700ms ease-in-out; }
-  .navtop a {
-    opacity: 0;
-    animation: fadein 700ms ease-in-out forwards 700ms; }
+    .navtop a {
+      opacity: 0;
+      animation: fadein 700ms ease-in-out forwards 700ms; }
   .banner {
     transform-origin: top;
     transform: rotateX(90deg);
     animation: displaynone 700ms ease-in-out forwards 700ms; }
-  .banner .b {
-    display: flex; }
-  .banner * {
-    opacity: 0;
-    animation: fadein 700ms ease-in-out forwards 1400ms; } }
+    .banner .b {
+      display: flex; }
+    .banner * {
+      opacity: 0;
+      animation: fadein 700ms ease-in-out forwards 1400ms; } }
 
 .site-header {
   flex-direction: column;
@@ -233,28 +231,28 @@ footer {
   justify-content: center;
   align-items: center;
   background-color: black; }
-.navtop ul {
-  display: flex; }
-.navtop ul.level-1 li {
-  background-image: url(https://erebos.xyz/PIC/gg.gif);
-  list-style: none; }
-.navtop ul.level-1 li:hover {
-  background-color: rgba(0, 0, 0, 0.5); }
-.navtop ul.level-1 li:hover > ul.level-2 {
-  visibility: visible; }
-.navtop ul.level-1 li a {
-  display: block;
-  width: 200px;
-  text-align: center;
-  padding: 13px 34px 13px 34px;
-  text-decoration: none;
-  color: #fff;
-  background-color: rgba(0, 0, 0, 0.5); }
-.navtop ul.level-1 li ul.level-2 {
-  z-index: 1;
-  flex-direction: column;
-  position: absolute;
-  visibility: hidden; }
+  .navtop ul {
+    display: flex; }
+  .navtop ul.level-1 li {
+    background-image: url(https://erebos.xyz/PIC/gg.gif);
+    list-style: none; }
+    .navtop ul.level-1 li:hover {
+      background-color: rgba(0, 0, 0, 0.5); }
+    .navtop ul.level-1 li:hover > ul.level-2 {
+      visibility: visible; }
+    .navtop ul.level-1 li a {
+      display: block;
+      width: 200px;
+      text-align: center;
+      padding: 13px 34px 13px 34px;
+      text-decoration: none;
+      color: #fff;
+      background-color: rgba(0, 0, 0, 0.5); }
+    .navtop ul.level-1 li ul.level-2 {
+      z-index: 1;
+      flex-direction: column;
+      position: absolute;
+      visibility: hidden; }
 
 .banner {
   position: relative;
@@ -282,21 +280,18 @@ footer {
   height: 100vh;
   width: 100%;
   background-color: rgba(0, 0, 0, 0.63); }
-.full {
-    opacity: 0;
-    animation: fadein 700ms ease-in-out forwards 1400ms; }
-.full .titlecontainer {
-  margin-bottom: 20vh; }
+  .full .titlecontainer {
+    margin-bottom: 20vh; }
 
 .f {
   justify-content: center;
   align-items: center;
   min-width: 300px;
   height: 100%; }
-.f .eule {
-  margin-top: 150px; }
-.f .kroko {
-  margin-top: 390px; }
+  .f .eule {
+    margin-top: 150px; }
+  .f .kroko {
+    margin-top: 390px; }
 
 .creativetitlecontainer {
   z-index: 0;
@@ -338,14 +333,14 @@ footer {
 @media only screen and (max-width: 1440px) {
   .boxes {
     order: 2; }
-  .boxes .box {
-    min-height: 300px; }
-  .boxes .box:nth-child(2) {
-    animation: rollleft 500ms ease-out forwards; }
-  .boxes .box:nth-child(3) {
-    animation: rollleft 500ms ease-out forwards 100ms; }
-  .boxes .box:nth-child(4) {
-    animation: rollleft 500ms ease-out forwards 200ms; }
+    .boxes .box {
+      min-height: 300px; }
+      .boxes .box:nth-child(2) {
+        animation: rollleft 500ms ease-out forwards; }
+      .boxes .box:nth-child(3) {
+        animation: rollleft 500ms ease-out forwards 100ms; }
+      .boxes .box:nth-child(4) {
+        animation: rollleft 500ms ease-out forwards 200ms; }
   .triangulum {
     order: 1;
     max-height: 750px;
@@ -360,12 +355,12 @@ footer {
     flex-direction: column;
     border: solid;
     border-width: 100px 30px; }
-  .boxes .box:nth-child(2) {
-    animation: rolldown 500ms ease-out forwards; }
-  .boxes .box:nth-child(3) {
-    animation: rolldown 500ms ease-out forwards 100ms; }
-  .boxes .box:nth-child(4) {
-    animation: rolldown 500ms ease-out forwards 200ms; }
+    .boxes .box:nth-child(2) {
+      animation: rolldown 500ms ease-out forwards; }
+    .boxes .box:nth-child(3) {
+      animation: rolldown 500ms ease-out forwards 100ms; }
+    .boxes .box:nth-child(4) {
+      animation: rolldown 500ms ease-out forwards 200ms; }
   .triangulum {
     order: 2;
     max-width: 50%; }
@@ -380,6 +375,7 @@ footer {
   background-color: rgba(0, 0, 0, 0.63); }
 
 .about-s {
+  display: flex;
   position: relative;
   top: 0px;
   display: none;
@@ -413,8 +409,8 @@ article input {
   background-color: #ffffff;
   box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.25);
   animation: rolldown 500ms ease-out forwards; }
-.box-title * {
-  animation: fadein 700ms ease-in-out forwards; }
+  .box-title * {
+    animation: fadein 700ms ease-in-out forwards; }
 
 .box {
   flex: 1;
@@ -422,8 +418,8 @@ article input {
   padding: 10px;
   background-color: #ffffff;
   box-shadow: 0 0 15px 5px rgba(0, 0, 0, 0.25); }
-.box * {
-  animation: fadein 700ms ease-in-out forwards; }
+  .box * {
+    animation: fadein 700ms ease-in-out forwards; }
 
 .triangulum {
   flex: 2;
@@ -436,9 +432,9 @@ article input {
   background-color: rgba(6, 85, 177, 0.63);
   user-select: none;
   background-image: url(https://erebos.xyz/PIC/grid2.png); }
-.triangulum * {
-  user-select: none;
-  -moz-user-select: none; }
+  .triangulum * {
+    user-select: none;
+    -moz-user-select: none; }
 
 .oculus-blink {
   z-index: 99;
@@ -474,24 +470,24 @@ article input {
   filter: blur(0px);
   width: 10%;
   height: 100%; }
-.oculus-nav:hover {
-  transform: scale(1.05); }
-.oculus-nav img {
-  -webkit-filter: invert(100%);
-  /* Safari */
-  filter: invert(100%); }
+  .oculus-nav:hover {
+    transform: scale(1.05); }
+  .oculus-nav img {
+    -webkit-filter: invert(100%);
+    /* Safari */
+    filter: invert(100%); }
 
 .prev {
   top: 0px;
   left: 0px; }
-.prev:hover {
-  box-shadow: inset 20px 0px 30px 0px #FFFFFF; }
+  .prev:hover {
+    box-shadow: inset 20px 0px 30px 0px #FFFFFF; }
 
 .next {
   top: 0px;
   right: 0px; }
-.next:hover {
-  box-shadow: inset -15px 0px 25px 0px #FFFFFF; }
+  .next:hover {
+    box-shadow: inset -15px 0px 25px 0px #FFFFFF; }
 
 .prev img {
   position: absolute;
@@ -522,18 +518,18 @@ article input {
   opacity: 1;
   animation-name: fadein;
   animation-duration: .7s; }
-.oculus-nav-dots .oculus-nav-dot {
-  width: 11px;
-  height: 11px;
-  margin: 0 4px;
-  position: relative;
-  border-radius: 100%;
-  display: inline-flex;
-  background-color: #ffffff;
-  border: 1px solid #000000; }
-.oculus-nav-dots .oculus-nav-dot:hover {
-  cursor: pointer;
-  background-color: rgba(0, 0, 0, 0.8); }
+  .oculus-nav-dots .oculus-nav-dot {
+    width: 11px;
+    height: 11px;
+    margin: 0 4px;
+    position: relative;
+    border-radius: 100%;
+    display: inline-flex;
+    background-color: #ffffff;
+    border: 1px solid #000000; }
+    .oculus-nav-dots .oculus-nav-dot:hover {
+      cursor: pointer;
+      background-color: rgba(0, 0, 0, 0.8); }
 
 input#about-1:checked + .about-s .oculus .oculus-nav-dots label#about-dot-1, input#about-2:checked + .about-s .oculus .oculus-nav-dots label#about-dot-2, input#about-3:checked + .about-s .oculus .oculus-nav-dots label#about-dot-3, input#about-4:checked + .about-s .oculus .oculus-nav-dots label#about-dot-4, input#about-5:checked + .about-s .oculus .oculus-nav-dots label#about-dot-5, input#about-6:checked + .about-s .oculus .oculus-nav-dots label#about-dot-6, input#about-7:checked + .about-s .oculus .oculus-nav-dots label#about-dot-7, input#about-8:checked + .about-s .oculus .oculus-nav-dots label#about-dot-8, input#about-9:checked + .about-s .oculus .oculus-nav-dots label#about-dot-9, input#about-10:checked + .about-s .oculus .oculus-nav-dots label#about-dot-10, input#about-11:checked + .about-s .oculus .oculus-nav-dots label#about-dot-11, input#about-12:checked + .about-s .oculus .oculus-nav-dots label#about-dot-12, input#about-13:checked + .about-s .oculus .oculus-nav-dots label#about-dot-13 {
   background: rgba(0, 0, 0, 0.8); }
@@ -543,6 +539,7 @@ input#about-1:checked + .about-s .oculus .oculus-nav-dots label#about-dot-1, inp
   z-index: 2; }
 
 .motd-s {
+  display: flex;
   box-sizing: border-box;
   justify-content: center;
   align-items: center;
@@ -559,9 +556,27 @@ input#about-1:checked + .about-s .oculus .oculus-nav-dots label#about-dot-1, inp
     background-color: #a80000; }
   .mitsudomoe {
     display: none; }
-  .info {
-    visibility: hidden;
-    height: 20vh; }
+  .theteam-s .members {
+    flex-direction: column; }
+    .theteam-s .members .mrow {
+      flex-direction: column; }
+      .theteam-s .members .mrow .member {
+        margin: 3%; }
+        .theteam-s .members .mrow .member .profile {
+          flex-direction: row; }
+          .theteam-s .members .mrow .member .profile .pic {
+            display: block;
+            position: relative;
+            transform: rotate(0deg); }
+          .theteam-s .members .mrow .member .profile .hollow .iback {
+            position: relative;
+            transform: rotate3d(0, 1, 0, 0deg);
+            color: #000; }
+          .theteam-s .members .mrow .member .profile .hollow .ifront {
+            visibility: hidden;
+            position: absolute; }
+          .theteam-s .members .mrow .member .profile:hover .member .pic {
+            transform: rotate(360deg); }
   .pony {
     display: none; } }
 
@@ -571,6 +586,25 @@ input#about-1:checked + .about-s .oculus .oculus-nav-dots label#about-dot-1, inp
     flex-direction: column;
     top: calc(32.1px + 1em);
     min-height: 100vh; }
+  .theteam-s .members {
+    flex-direction: row; }
+    .theteam-s .members .mrow {
+      flex-direction: row; }
+      .theteam-s .members .mrow .member .profile {
+        flex-direction: column; }
+        .theteam-s .members .mrow .member .profile .pic {
+          display: block;
+          position: relative;
+          transform: rotate(0deg); }
+        .theteam-s .members .mrow .member .profile .hollow .iback {
+          position: relative;
+          transform: rotate3d(0, 1, 0, 0deg);
+          color: #000; }
+        .theteam-s .members .mrow .member .profile .hollow .ifront {
+          visibility: hidden;
+          position: absolute; }
+        .theteam-s .members .mrow .member .profile:hover .member .pic {
+          transform: rotate(360deg); }
   .iris {
     border: solid;
     border-width: 0px 0px calc(100vh - 200px) calc(100vw - 200px); } }
@@ -623,8 +657,8 @@ input#about-1:checked + .about-s .oculus .oculus-nav-dots label#about-dot-1, inp
   left: 0px;
   width: 100%;
   height: 100%; }
-.mitsudomoe img:hover {
-  animation: rotate 700ms ease-in-out forwards; }
+  .mitsudomoe img:hover {
+    animation: rotate 700ms ease-in-out forwards; }
 
 .lorem {
   position: relative;
@@ -653,64 +687,25 @@ input#about-1:checked + .about-s .oculus .oculus-nav-dots label#about-dot-1, inp
   transform: scaleX(-1);
   filter: blur(0.8px); }
 
-/*section*theteam-s*********************************************************************************************************/
-.theteam-s {
-  background-color: #00397b; }
-.theteam-s .members {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-  min-height: calc(100vh - 320px); }
-.theteam-s .members .member {
-  display: flex;
-  flex-direction: column;
-  flex: 0.1;
-  min-width: 100px; }
-.theteam-s .members .member .pic {
-  display: flex;
-  justify-content: center;
-  align-items: center; }
-.theteam-s .members .member .pic img {
-  width: 100%;
-  height: auto;
-  border-radius: 100%; }
-.theteam-s .members .member .info {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center; }
-.theteam-s .thunder {
-  position: absolute;
-  bottom: 95px;
-  right: 270px; }
-.theteam-s .pony {
-  z-index: -1;
-  position: absolute;
-  height: 200px;
-  width: auto;
-  bottom: 0px;
-  right: 0px; }
-
 /*section*nyan-s*********************************************************************************************************/
 .nyan {
   min-height: 320px;
   background-attachment: fixed;
   background-image: url(https://erebos.xyz/PIC/m33.png); }
-.nyan a {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  width: 100%;
-  height: 320px; }
-.nyan a h2 {
-  z-index: 1; }
-.nyan a img {
-  position: absolute;
-  height: 160px;
-  top: 80px;
-  right: 80px; }
+  .nyan a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 100%;
+    height: 320px; }
+    .nyan a h2 {
+      z-index: 1; }
+    .nyan a img {
+      position: absolute;
+      height: 160px;
+      top: 80px;
+      right: 80px; }
 
 .nyanlink {
   background-color: rgba(6, 85, 177, 0.63);
@@ -718,6 +713,388 @@ input#about-1:checked + .about-s .oculus .oculus-nav-dots label#about-dot-1, inp
 
 .nyan-background {
   animation: nyan-background 1000ms linear infinite; }
+
+/*section*theteam-s*********************************************************************************************************/
+.theteam-s {
+  background-color: #00397b; }
+  .theteam-s .members {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: calc(100vh - 320px);
+    width: 100%; }
+    .theteam-s .members .mrow {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      width: 100%;
+      margin: 10px; }
+      .theteam-s .members .mrow .member {
+        flex: 0.1; }
+        .theteam-s .members .mrow .member .profile {
+          top: 0px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          position: relative;
+          min-width: 100px; }
+          .theteam-s .members .mrow .member .profile .pic {
+            width: 100%;
+            max-width: 210px; }
+            .theteam-s .members .mrow .member .profile .pic img {
+              top: 0px;
+              border-radius: 50%;
+              width: 100%;
+              height: auto;
+              margin: 0px 0px -5px 0px; }
+          .theteam-s .members .mrow .member .profile .hollow {
+            position: relative;
+            border-radius: 50%;
+            margin: 10px 11%;
+            padding: 1%;
+            transition: all 0.4s ease-in-out; }
+            .theteam-s .members .mrow .member .profile .hollow .info {
+              transition: all 0.4s ease-in-out;
+              transform-style: preserve-3d;
+              margin: -2.5%; }
+              .theteam-s .members .mrow .member .profile .hollow .info .iback {
+                display: flex;
+                flex-direction: column;
+                top: 0px;
+                right: 0px;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                max-width: 400px;
+                height: 100%;
+                border-radius: 50%;
+                -webkit-backface-visibility: hidden;
+                backface-visibility: hidden; }
+                .theteam-s .members .mrow .member .profile .hollow .info .iback h3 {
+                  position: absolute;
+                  top: 0px; }
+                .theteam-s .members .mrow .member .profile .hollow .info .iback p {
+                  margin-top: 50px; }
+              .theteam-s .members .mrow .member .profile .hollow .info .ifront {
+                overflow: hidden;
+                border-radius: 50%; }
+                .theteam-s .members .mrow .member .profile .hollow .info .ifront img {
+                  position: relative;
+                  width: 100%;
+                  transform: scale(1.25);
+                  height: auto;
+                  margin: 0px 0px -5px 0px;
+                  -webkit-backface-visibility: hidden;
+                  backface-visibility: hidden; }
+
+.thunder {
+  position: absolute;
+  bottom: 95px;
+  right: 270px; }
+
+.pony {
+  z-index: -1;
+  position: absolute;
+  height: 200px;
+  width: auto;
+  bottom: 0px;
+  right: 0px; }
+
+/*viewport***************************************************************************************************************/
+@media only screen and (max-width: 1440px) {
+  .admins-s {
+    flex-direction: column; }
+    .admins-s .admins-h {
+      display: flex;
+      align-items: center;
+      border-bottom: solid #a80000 1px;
+      width: 100vw;
+      height: 100px; }
+    .admins-s .members {
+      flex-direction: row; }
+      .admins-s .members .mrow {
+        flex-direction: column; }
+        .admins-s .members .mrow .member .profile {
+          flex-direction: row; }
+          .admins-s .members .mrow .member .profile .pic {
+            display: none;
+            position: absolute; }
+          .admins-s .members .mrow .member .profile .hollow {
+            box-shadow: 0 0 0 13px rgba(0, 0, 0, 0.2), inset 0 0 3px rgba(115, 114, 23, 0.8);
+            background-attachment: fixed;
+            background-image: url(https://erebos.xyz/PIC/m33.png); }
+            .admins-s .members .mrow .member .profile .hollow .iback {
+              position: absolute;
+              background-color: #000;
+              transform: rotate3d(0, 1, 0, 180deg);
+              color: #fff;
+              font-size: 25px; }
+            .admins-s .members .mrow .member .profile .hollow .ifront {
+              visibility: visible;
+              position: relative; }
+          .admins-s .members .mrow .member .profile:hover .hollow {
+            box-shadow: 0 0 0 0px rgba(255, 255, 255, 0.3), inset 0 0 3px rgba(115, 114, 23, 0.8); }
+          .admins-s .members .mrow .member .profile:hover .hollow .info {
+            transform-style: preserve-3d;
+            transform: rotate3d(0, 1, 0, -180deg); }
+  .mods-s {
+    flex-direction: column; }
+    .mods-s .mods-h {
+      display: flex;
+      align-items: center;
+      border-bottom: solid #2a2a2a 1px;
+      width: 100vw;
+      height: 100px; }
+    .mods-s .members {
+      flex-direction: row; }
+      .mods-s .members .mrow {
+        flex-direction: column; }
+        .mods-s .members .mrow .member .profile {
+          flex-direction: row; }
+          .mods-s .members .mrow .member .profile .pic {
+            display: none;
+            position: absolute; }
+          .mods-s .members .mrow .member .profile .hollow {
+            box-shadow: 0 0 0 5px rgba(0, 0, 0, 0.2), inset 0 0 3px rgba(115, 114, 23, 0.8);
+            background-attachment: fixed;
+            background-image: url(https://erebos.xyz/PIC/m33.png); }
+            .mods-s .members .mrow .member .profile .hollow .iback {
+              position: absolute;
+              background-color: #000;
+              transform: rotate3d(0, 1, 0, 180deg);
+              color: #fff;
+              font-size: 25px; }
+            .mods-s .members .mrow .member .profile .hollow .ifront {
+              visibility: visible;
+              position: relative; }
+          .mods-s .members .mrow .member .profile:hover .hollow {
+            box-shadow: 0 0 0 0px rgba(255, 255, 255, 0.3), inset 0 0 3px rgba(115, 114, 23, 0.8); }
+          .mods-s .members .mrow .member .profile:hover .hollow .info {
+            transform-style: preserve-3d;
+            transform: rotate3d(0, 1, 0, -180deg); } }
+
+@media only screen and (min-width: 1440px) {
+  .admins-s {
+    flex-direction: row; }
+    .admins-s .admins-h {
+      display: flex;
+      align-items: center;
+      border-right: solid #a80000 1px;
+      width: 300px;
+      height: 70vh; }
+    .admins-s .members {
+      flex-direction: column; }
+      .admins-s .members .mrow {
+        flex-direction: row; }
+        .admins-s .members .mrow .member .profile {
+          flex-direction: column; }
+          .admins-s .members .mrow .member .profile .pic {
+            display: block;
+            position: absolute; }
+          .admins-s .members .mrow .member .profile .hollow {
+            box-shadow: 0 0 0 20px rgba(0, 0, 0, 0.2), inset 0 0 3px rgba(115, 114, 23, 0.8);
+            background-attachment: fixed;
+            background-image: url(https://erebos.xyz/PIC/m33.png); }
+            .admins-s .members .mrow .member .profile .hollow .iback {
+              position: absolute;
+              background-color: #000;
+              transform: rotate3d(0, 1, 0, 180deg);
+              color: #fff;
+              font-size: 20px; }
+            .admins-s .members .mrow .member .profile .hollow .ifront {
+              visibility: visible;
+              position: relative; }
+          .admins-s .members .mrow .member .profile:hover .hollow {
+            box-shadow: 0 0 0 0px rgba(255, 255, 255, 0.3), inset 0 0 3px rgba(115, 114, 23, 0.8); }
+          .admins-s .members .mrow .member .profile:hover .hollow .info {
+            transform-style: preserve-3d;
+            transform: rotate3d(0, 1, 0, -180deg); }
+  .mods-s {
+    flex-direction: row; }
+    .mods-s .mods-h {
+      display: flex;
+      align-items: center;
+      border-right: solid #2a2a2a 1px;
+      width: 300px;
+      height: 70vh; }
+    .mods-s .members {
+      flex-direction: column; }
+      .mods-s .members .mrow {
+        flex-direction: row; }
+        .mods-s .members .mrow .member .profile {
+          flex-direction: row; }
+          .mods-s .members .mrow .member .profile .pic {
+            display: none;
+            position: absolute; }
+          .mods-s .members .mrow .member .profile .hollow {
+            box-shadow: 0 0 0 13px rgba(0, 0, 0, 0.2), inset 0 0 3px rgba(115, 114, 23, 0.8);
+            background-attachment: fixed;
+            background-image: url(https://erebos.xyz/PIC/m33.png); }
+            .mods-s .members .mrow .member .profile .hollow .iback {
+              position: absolute;
+              background-color: #000;
+              transform: rotate3d(0, 1, 0, 180deg);
+              color: #fff;
+              font-size: 20px; }
+            .mods-s .members .mrow .member .profile .hollow .ifront {
+              visibility: visible;
+              position: relative; }
+          .mods-s .members .mrow .member .profile:hover .hollow {
+            box-shadow: 0 0 0 0px rgba(255, 255, 255, 0.3), inset 0 0 3px rgba(115, 114, 23, 0.8); }
+          .mods-s .members .mrow .member .profile:hover .hollow .info {
+            transform-style: preserve-3d;
+            transform: rotate3d(0, 1, 0, -180deg); } }
+
+/*section*sharingan-s****************************************************************************************************/
+.community-s {
+  display: flex;
+  align-items: center;
+  top: calc(32.1px + 1em);
+  min-height: 100vh; }
+
+.admins-h {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.admins-s {
+  background-color: #2a2a2a; }
+  .admins-s .members {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: calc(100vh - 320px);
+    width: 100%; }
+    .admins-s .members .mrow {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      width: 100%;
+      margin: 10px; }
+      .admins-s .members .mrow .member {
+        flex: 0.1; }
+        .admins-s .members .mrow .member .profile {
+          top: 0px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          position: relative;
+          min-width: 100px; }
+          .admins-s .members .mrow .member .profile .pic {
+            width: 100%; }
+            .admins-s .members .mrow .member .profile .pic img {
+              top: 0px;
+              border-radius: 50%;
+              width: 100%;
+              height: auto;
+              margin: 0px 0px -5px 0px; }
+          .admins-s .members .mrow .member .profile .hollow {
+            position: relative;
+            border-radius: 50%;
+            margin: 11%;
+            padding: 1%;
+            transition: all 0.4s ease-in-out; }
+            .admins-s .members .mrow .member .profile .hollow .info {
+              transition: all 0.4s ease-in-out;
+              transform-style: preserve-3d;
+              margin: -2.5%; }
+              .admins-s .members .mrow .member .profile .hollow .info .iback {
+                display: flex;
+                flex-direction: column;
+                top: 0px;
+                right: 0px;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+                -webkit-backface-visibility: hidden;
+                backface-visibility: hidden; }
+                .admins-s .members .mrow .member .profile .hollow .info .iback h5 {
+                  display: inline; }
+                .admins-s .members .mrow .member .profile .hollow .info .iback p {
+                  font-size: 0.5em; }
+              .admins-s .members .mrow .member .profile .hollow .info .ifront {
+                overflow: hidden;
+                border-radius: 50%; }
+                .admins-s .members .mrow .member .profile .hollow .info .ifront img {
+                  position: relative;
+                  width: 100%;
+                  transform: scale(1.25);
+                  height: auto;
+                  margin: 0px 0px -5px 0px;
+                  -webkit-backface-visibility: hidden;
+                  backface-visibility: hidden; }
+
+.mods-h {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.mods-s {
+  background-color: #a80000; }
+  .mods-s .members {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: calc(100vh - 320px);
+    width: 100%; }
+    .mods-s .members .mrow {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      width: 100%;
+      margin: 10px; }
+      .mods-s .members .mrow .member {
+        flex: 0.1; }
+        .mods-s .members .mrow .member .profile {
+          top: 0px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          position: relative;
+          min-width: 100px; }
+          .mods-s .members .mrow .member .profile .pic {
+            width: 100%; }
+            .mods-s .members .mrow .member .profile .pic img {
+              top: 0px;
+              border-radius: 50%;
+              width: 100%;
+              height: auto;
+              margin: 0px 0px -5px 0px; }
+          .mods-s .members .mrow .member .profile .hollow {
+            position: relative;
+            border-radius: 50%;
+            margin: 11%;
+            padding: 1%;
+            transition: all 0.4s ease-in-out; }
+            .mods-s .members .mrow .member .profile .hollow .info {
+              transition: all 0.4s ease-in-out;
+              transform-style: preserve-3d;
+              margin: -2.5%; }
+              .mods-s .members .mrow .member .profile .hollow .info .iback {
+                display: flex;
+                flex-direction: column;
+                top: 0px;
+                right: 0px;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+                -webkit-backface-visibility: hidden;
+                backface-visibility: hidden; }
+              .mods-s .members .mrow .member .profile .hollow .info .ifront {
+                overflow: hidden;
+                border-radius: 50%; }
+                .mods-s .members .mrow .member .profile .hollow .info .ifront img {
+                  position: relative;
+                  width: 100%;
+                  transform: scale(1.25);
+                  height: auto;
+                  margin: 0px 0px -5px 0px;
+                  -webkit-backface-visibility: hidden;
+                  backface-visibility: hidden; }
 
 .gallery {
   background-color: grey; }
@@ -728,6 +1105,7 @@ input#about-1:checked + .about-s .oculus .oculus-nav-dots label#about-dot-1, inp
   align-items: center; }
 
 .gallery-s {
+  display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
@@ -751,17 +1129,17 @@ input#about-1:checked + .about-s .oculus .oculus-nav-dots label#about-dot-1, inp
   position: relative;
   min-height: 500px;
   background-color: rgba(0, 0, 0, 0.63); }
-.spaceship-s div {
-  width: calc(100vw - 50px);
-  height: 400px; }
-.spaceship-s div img {
-  position: absolute;
-  top: 195px;
-  right: calc(50% - 25px); }
-.spaceship-s div:hover {
-  cursor: url(https://erebos.xyz/PIC/spaceship1.png) 25 55, auto; }
-.spaceship-s div:hover img {
-  display: none; }
+  .spaceship-s div {
+    width: calc(100vw - 50px);
+    height: 400px; }
+    .spaceship-s div img {
+      position: absolute;
+      top: 195px;
+      right: calc(50% - 25px); }
+    .spaceship-s div:hover {
+      cursor: url(https://erebos.xyz/PIC/spaceship1.png) 25 55, auto; }
+      .spaceship-s div:hover img {
+        display: none; }
 
 /*section*about-s*boom.js*A.P*************************************************************************************************/
 @media only screen and (min-width: 1441px) {
@@ -804,12 +1182,12 @@ input#about-1:checked + .about-s .oculus .oculus-nav-dots label#about-dot-1, inp
   position: absolute;
   display: flex;
   background-color: transparent; }
-.oldabout .boxes {
-  display: none; }
-.oldabout .triangulum {
-  top: 0px;
-  right: 0px;
-  animation: fadeout 700ms ease-in-out forwards; }
+  .oldabout .boxes {
+    display: none; }
+  .oldabout .triangulum {
+    top: 0px;
+    right: 0px;
+    animation: fadeout 700ms ease-in-out forwards; }
 
 .party {
   background-color: transparent;

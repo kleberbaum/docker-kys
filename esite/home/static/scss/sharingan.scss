@@ -17,9 +17,44 @@
     display: none;
   }
 
-  .info {
-    visibility: hidden;
-    height: 20vh;
+  .theteam-s{
+    .members{
+      flex-direction: column;
+      .mrow{
+        flex-direction: column;
+        .member{
+          margin: 3%;
+          .profile{
+            flex-direction: row;
+            .pic{
+              display: block;
+              position: relative;
+              transform: rotate(0deg);
+            }
+            .hollow{
+              // box-shadow: 0 0 0 13px rgba(0, 0, 0, 0.2), inset 0 0 3px rgba(115,114, 23, 0.8);
+              // background-attachment: fixed;
+              // background-image: url(https://erebos.xyz/PIC/m33.png);
+              .iback{
+                position: relative;
+                transform: rotate3d(0,1,0,0deg);
+                color: #000;
+              }
+              .ifront{
+                visibility: hidden;
+                position: absolute;
+              }
+            }
+            &:hover .hollow {
+
+            }
+            &:hover  .member .pic {
+              transform: rotate(360deg);
+            }
+          }
+        }
+      }
+    }
   }
 
   .pony{
@@ -33,6 +68,45 @@
     flex-direction: column;
     top: $navtop;
     min-height: 100vh;
+  }
+
+  .theteam-s{
+    .members{
+      flex-direction: row;
+      .mrow{
+        flex-direction: row;
+        .member{
+          .profile{
+            flex-direction: column;
+            .pic{
+              display: block;
+              position: relative;
+              transform: rotate(0deg);
+            }
+            .hollow{
+              // box-shadow: 0 0 0 20px rgba(0, 0, 0, 0.2), inset 0 0 3px rgba(115,114, 23, 0.8);
+              // background-attachment: fixed;
+              // background-image: url(https://erebos.xyz/PIC/m33.png);
+              .iback{
+                position: relative;
+                transform: rotate3d(0,1,0,0deg);
+                color: #000;
+              }
+              .ifront{
+                visibility: hidden;
+                position: absolute;
+              }
+            }
+            &:hover .hollow {
+
+            }
+            &:hover  .member .pic {
+              transform: rotate(360deg);
+            }
+          }
+        }
+      }
+    }
   }
 
   .iris{
@@ -136,53 +210,6 @@
   filter: blur(0.8px);
 }
 
-/*section*theteam-s*********************************************************************************************************/
-.theteam-s{
-  background-color: rgb(0, 57, 123);
-  .members{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    min-height: calc(100vh - 320px);
-    .member{
-      display: flex;
-      flex-direction: column;
-      flex: 0.1;
-      min-width: 100px;
-      .pic{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        img{
-          width: 100%;
-          height: auto;
-          border-radius: 100%;
-        }
-      }
-      .info{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-      }
-    }
-  }
-  .thunder{
-    position: absolute;
-    bottom: 95px;
-    right: 270px;
-  }
-  .pony{
-    z-index: -1;
-    position: absolute;
-    height: 200px;
-    width: auto;
-    bottom: 0px;
-    right: 0px;
-  }
-}
-
 /*section*nyan-s*********************************************************************************************************/
 .nyan {
   min-height: 320px;
@@ -214,4 +241,107 @@
 
 .nyan-background{
   animation: nyan-background 1000ms linear infinite;
+}
+
+/*section*theteam-s*********************************************************************************************************/
+.theteam-s{
+  background-color: rgb(0, 57, 123);
+  .members{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: calc(100vh - 320px);
+    width: 100%;
+    .mrow{
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      width: 100%;
+      margin: 10px;
+      .member{
+        flex: 0.1;
+        .profile{
+          top: 0px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          position: relative;
+          min-width: 100px;
+          .pic{
+            width: 100%;
+            max-width: 210px;
+            img{
+              top: 0px;
+              border-radius: 50%;
+              width: 100%;
+              height: auto;
+              // don't think about the line below
+              margin: 0px 0px -5px 0px;
+            }
+          }
+          .hollow{
+            position: relative;
+            border-radius: 50%;
+            margin: 10px 11%;
+            padding: 1%;
+            transition: all 0.4s ease-in-out;
+            .info{
+              transition: all 0.4s ease-in-out;
+              transform-style: preserve-3d;
+              margin: -2.5%;
+              .iback{
+                display: flex;
+                flex-direction: column;
+                top: 0px;
+                right: 0px;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                max-width: 400px;
+                height: 100%;
+                border-radius: 50%;
+                -webkit-backface-visibility: hidden;
+                backface-visibility: hidden;
+                h3{
+                  position: absolute;
+                  top: 0px;
+                }
+                p{
+                  margin-top: 50px;
+                }
+              }
+              .ifront{
+                overflow: hidden;
+                border-radius: 50%;
+                img{
+                  position: relative;
+                  width: 100%;
+                  transform: scale(1.25);
+                  height: auto;
+                  // don't think about the line below
+                  margin: 0px 0px -5px 0px;
+                  -webkit-backface-visibility: hidden;
+                  backface-visibility: hidden;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.thunder{
+  position: absolute;
+  bottom: 95px;
+  right: 270px;
+}
+.pony{
+  z-index: -1;
+  position: absolute;
+  height: 200px;
+  width: auto;
+  bottom: 0px;
+  right: 0px;
 }

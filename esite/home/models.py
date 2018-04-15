@@ -47,10 +47,11 @@ class HomePage(Page):
         ('sharingan_1', blocks.RichTextBlock(default="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")),
         ('sharingan_2', blocks.RichTextBlock(default="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")),
         ('sharingan_3', blocks.RichTextBlock(default="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", features=['bold', 'italic', 'underline', 'strikethrough', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'ol', 'ul', 'hr', 'embed', 'link', 'document-link', 'image'], classname="full")),
-        
+      ])),
+      ('team', blocks.StructBlock([
         ('show_team', blocks.BooleanBlock(default=False, help_text="Whether the team will be shown on this block", required=False, classname="full")),
         ('nyan_titel', blocks.CharBlock(max_length=16, default="The Team", classname="full")),
-        ('team', blocks.StreamBlock([
+        ('members', blocks.StreamBlock([
           ('member', blocks.StructBlock([
             ('pic', ImageChooserBlock(blank=True, classname="full")),
             ('name', blocks.CharBlock(blank=True, max_length=16, default="", classname="full")),
@@ -59,6 +60,34 @@ class HomePage(Page):
         ], required=False))
       ]))
     ], icon='view')),
+
+    ('acommunity', blocks.StructBlock([
+      ('admins', blocks.StructBlock([
+        ('show_admins', blocks.BooleanBlock(default=True, help_text="Whether the admins will be shown on this block", required=False, classname="full")),
+        ('admins_titel', blocks.CharBlock(max_length=16, default="Admins", classname="full")),
+        ('members', blocks.StreamBlock([
+          ('mrow', blocks.StreamBlock([
+            ('member', blocks.StructBlock([
+              ('pic', ImageChooserBlock(blank=True, classname="full")),
+              ('name', blocks.CharBlock(blank=True, max_length=16, default="", classname="full")),
+              ('description', blocks.CharBlock(max_length=128, default="", classname="full"))
+            ], icon='user'))
+          ], icon='group'))
+        ], required=False))
+      ])),
+      ('mods', blocks.StructBlock([
+        ('show_mods', blocks.BooleanBlock(default=True, help_text="Whether the mods will be shown on this block", required=False, classname="full")),
+        ('mods_titel', blocks.CharBlock(max_length=16, default="Mods", classname="full")),
+        ('members', blocks.StreamBlock([
+          ('mrow', blocks.StreamBlock([
+            ('member', blocks.StructBlock([
+              ('pic', ImageChooserBlock(blank=True, classname="full")),
+              ('name', blocks.CharBlock(blank=True, max_length=16, default="", classname="full"))
+            ], icon='user'))
+          ], icon='group'))
+        ], required=False))
+      ]))
+    ], icon='group')),
 
     ('aspaceship', blocks.StructBlock([
     ], icon='pick')),

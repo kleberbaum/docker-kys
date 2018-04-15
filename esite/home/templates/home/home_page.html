@@ -21,6 +21,7 @@
 <script type="text/javascript" src="{% static 'js/oculus.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/nyan.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/scc.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/charc.js' %}"></script>
 <script type="text/javascript" src="{% static 'js/party.js' %}"></script>
 {% endblock %}
 {% block content %}
@@ -41,6 +42,8 @@
       {% include "home/a_motd/motd.html" %}
     {% elif a.block_type == 'asharingan' %}
       {% include "home/a_sharingan/sharingan.html" %}
+    {% elif a.block_type == 'acommunity' %}
+      {% include "home/a_community/community.html" %}
     {% elif a.block_type == 'aspaceship' %}
       {% include "home/a_spaceship/spaceship.html" %}
     {% elif a.block_type == 'agallery' %}
