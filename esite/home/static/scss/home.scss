@@ -15,11 +15,9 @@ $about-min-h: 750px;
 
 /*viewport***************************************************************************************************************/
 
-
 @media only screen and (min-width: 1440px) {
   article {
-    overflow: hidden;
-    transform-origin: bottom;
+    transform-origin: top;
     transform: rotateX(90deg);
     max-height: 0px;
     animation: displaynone 700ms ease-in-out forwards 1400ms;
@@ -30,7 +28,6 @@ $about-min-h: 750px;
   }
 
   footer {
-    overflow: hidden;
     transform-origin: top;
     max-height: 0px;
     transform: rotateX(90deg);
@@ -144,7 +141,6 @@ article {
 
 section {
   overflow: hidden;
-  top: 0px;
   min-height: 666px;
 }
 
@@ -162,9 +158,9 @@ footer {
 @import "site-header";
 @import "about";
 @import "motd";
+@import "gallery";
 @import "sharingan";
 @import "community";
-@import "gallery";
 @import "spaceship";
 @import "js";
 

@@ -2,8 +2,7 @@
 /*viewport***************************************************************************************************************/
 @media only screen and (min-width: 1440px) {
   article {
-    overflow: hidden;
-    transform-origin: bottom;
+    transform-origin: top;
     transform: rotateX(90deg);
     max-height: 0px;
     animation: displaynone 700ms ease-in-out forwards 1400ms; }
@@ -11,7 +10,6 @@
       opacity: 0;
       animation: fadein 700ms ease-in-out forwards 2100ms; }
   footer {
-    overflow: hidden;
     transform-origin: top;
     max-height: 0px;
     transform: rotateX(90deg);
@@ -97,7 +95,6 @@ body {
 
 section {
   overflow: hidden;
-  top: 0px;
   min-height: 666px; }
 
 footer {
@@ -546,6 +543,30 @@ input#about-1:checked + .about-s .oculus .oculus-nav-dots label#about-dot-1, inp
   min-height: 320px;
   background-color: rgba(0, 0, 0, 0.63); }
 
+.gallery {
+  background-color: grey; }
+
+.gallery-h {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.gallery-s {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+  max-height: 1400px; }
+
+.gallery-s img {
+  margin: 3px;
+  max-width: 600px;
+  max-height: 600px; }
+
+.gallery-s img:nth-child(4) {
+  opacity: 0; }
+
 /*viewport***************************************************************************************************************/
 @media only screen and (max-width: 1440px) {
   .iris-1 {
@@ -611,8 +632,8 @@ input#about-1:checked + .about-s .oculus .oculus-nav-dots label#about-dot-1, inp
 
 /*section*sharingan-s****************************************************************************************************/
 .sharingan-s {
-  flex-direction: column;
-  top: calc(32.1px + 1em); }
+  display: flex;
+  flex-direction: column; }
 
 .c {
   flex: 1;
@@ -1095,30 +1116,6 @@ input#about-1:checked + .about-s .oculus .oculus-nav-dots label#about-dot-1, inp
                   margin: 0px 0px -5px 0px;
                   -webkit-backface-visibility: hidden;
                   backface-visibility: hidden; }
-
-.gallery {
-  background-color: grey; }
-
-.gallery-h {
-  display: flex;
-  justify-content: center;
-  align-items: center; }
-
-.gallery-s {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  flex-wrap: wrap;
-  max-height: 1400px; }
-
-.gallery-s img {
-  margin: 3px;
-  max-width: 600px;
-  max-height: 600px; }
-
-.gallery-s img:nth-child(4) {
-  opacity: 0; }
 
 /*section*spaceship-s****************************************************************************************************/
 .spaceship-s {
