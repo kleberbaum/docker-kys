@@ -1,0 +1,2 @@
+# API
+Django GraphQL API
