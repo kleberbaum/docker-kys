@@ -1,0 +1,82 @@
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+{% block sharingan %}
+<article id="projekte" class="sharingan">
+  {% if a.value.sharingan.show_projects %}
+  <section id="ts3.party" class="sharingan-s sharingan-1">
+    <div class="c">
+      <div class="iris iris-1">
+        <div class="mitsudomoe mitsudomoe-1">
+          <img src="https://erebos.xyz/PIC/mitsudomoe1.png" alt="mitsudomoe1">
+        </div>
+      </div>
+      <div class="lorem">
+        {{ a.value.sharingan.sharingan_1|richtext }}
+      </div>
+    </div>
+  </section>
+  <section id="nize.host" class="sharingan-s sharingan-2">
+    <div class="c">
+      <div class="iris iris-2">
+        <div class="mitsudomoe mitsudomoe-2">
+          <img src="https://erebos.xyz/PIC/mitsudomoe2.png" alt="mitsudomoe2">
+        </div>
+      </div>
+      <div class="lorem">
+        {{ a.value.sharingan.sharingan_2|richtext }}
+      </div>
+    </div>
+  </section>
+  <section id="chat.erebos" class="sharingan-s sharingan-3">
+    <div class="c">
+      <div class="iris iris-3">
+        <div class="mitsudomoe mitsudomoe-3">
+          <img src="https://erebos.xyz/PIC/mitsudomoe3.png" alt="mitsudomoe3">
+        </div>
+      </div>
+      <div class="lorem">
+        {{ a.value.sharingan.sharingan_3|richtext }}
+      </div>
+    </div>
+  </section>
+  {% endif %}
+  {% if a.value.team.show_team %}
+  <section id="theteam" class="sharingan-s theteam-s">
+    <header class="nyan">
+      <a class="nyanlink" href="https://www.youtube.com/watch?v=QH2-TGUlwu4" target="_blank">
+        <h3>{{ a.value.team.nyan_titel }}</h3>
+        <img src="https://erebos.xyz/PIC/nyan.gif" alt="nyan">
+      </a>
+      <audio id="nyanaudio" preload="auto">
+        <source src="https://erebos.xyz/AUDIO/nyan.mp3" type="audio/mpeg">
+        <source src="https://erebos.xyz/AUDIO/party.ogg" type="audio/ogg">
+      </audio>
+    </header>
+    <div class="members">
+      <div class="mrow">
+        {% for member in a.value.team.members %}
+        <div class="member">
+          <div class="profile">
+            <div class="pic">
+              {% image member.value.pic fill-200x200 alt=member.value.name %}
+            </div>
+            <div class="hollow">
+              <div class="info">
+                <div class="ifront">
+                  {% image member.value.pic fill-200x200 alt=member.value.name %}
+                </div>
+                <div class="iback">
+                  <h3>{{ member.value.name }}</h3>
+                  <p>{{ member.value.description }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  {% endif %}
+</article>
+{% endblock %}

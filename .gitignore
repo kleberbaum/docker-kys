@@ -1,0 +1,26 @@
+# Custom gitignore file for Django
+
+# Pycache
+__pycache__/
+*.pyc
+
+# SQLite
+*.sqlite3
+
+# Custom gitignore file for esite
+
+# Audios
+*.ogg
+*.mp3
+
+# Images
+*.jpg
+*.png
+*.gif
+*.svg
+
+# Fonts
+*.ttf
+
+# Docker
+.env
