@@ -11,7 +11,7 @@ ENV DJANGO_DEBUG=off \
 
 # uWSGI configuration (customize as needed):
 ENV UWSGI_UID=1000 UWSGI_GID=2000 \
-	UWSGI_SOCKET=:8000 \
+	UWSGI_HTTP=:8000 \
 	UWSGI_VIRTUALENV=/venv \
 	UWSGI_WSGI_FILE=esite/wsgi_production.py \
 	UWSGI_MASTER=1 \
