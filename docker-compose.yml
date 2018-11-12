@@ -1,54 +1,55 @@
-version: '3'
+version: '3.1'
 
 services:
 
 ################################################################################
-# PostgreSQL
+# MariaDB
 ################################################################################
 
     db:
-        image: postgres:9.6
+        image: thedifferent/mariadb:gina
+        #build: mariadb
         environment:
-            - POSTGRES_DB=app_db
-            - POSTGRES_USER=app_user
-            - POSTGRES_PASSWORD=changeme
-        restart: always
+        - "MYSQL_ROOT_HOST=%"
+        - "MYSQL_ROOT_PASSWORD_LOCAL=false"
+        - "MYSQL_ROOT_PASSWORD=changeme"
+        - "MYSQL_DATABASE=app_db"
+        - "MYSQL_USER=app_user"
+        - "MYSQL_PASSWORD=changeme"
 
 ################################################################################
-# redis
+# Redis
 ################################################################################
 
     redis:
         image: redis:3.0
-        restart: always
 
 ################################################################################
-# elasticsearch
+# Elasticsearch
 ################################################################################
 
     elasticsearch:
         image: elasticsearch:2.3
-        restart: always
 
 ################################################################################
-# esite app
+# Django / Wagtail
 ################################################################################
 
     app:
         build: .
         environment:
-            - DJANGO_SECRET_KEY=changeme
-            - DATABASE_URL=postgres://app_user:changeme@db/app_db
-            - CACHE_URL=redis://redis
-            - ELASTICSEARCH_ENDPOINT=elasticsearch
+            - "DJANGO_SECRET_KEY=changeme"
+            #- "DATABASE_URL=postgres://app_user:changeme@db/app_db"
+            - "DATABASE_URL=mysql://app_user:changeme@db:3306/app_db"
+            - "CACHE_URL=redis://redis"
+            - "ELASTICSEARCH_ENDPOINT=elasticsearch"
         links:
-            - db:db
-            - redis:redis
-            - elasticsearch:elasticsearch
+            - "db:db"
+            - "redis:redis"
+            - "elasticsearch:elasticsearch"
         ports:
-            - 50000:8000/tcp
+            - "50000:8000/tcp"
         depends_on:
-            - db
-            - redis
-            - elasticsearch
-        restart: always
+            - "db"
+            - "redis"
+            - "elasticsearch"
