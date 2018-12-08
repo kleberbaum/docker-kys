@@ -1,0 +1,36 @@
+# Custom dockerignore file for Django
+
+# Pycache
+__pycache__/
+*.pyc
+
+# SQLite
+*.sqlite3
+
+# Custom dockerignore file for esite
+
+# Audios
+*.ogg
+*.mp3
+
+# Images
+*.jpg
+*.png
+*.gif
+*.svg
+
+# Fonts
+*.ttf
+
+# Docker
+.env
+
+# Git
+.git/
+.github/
+.gitignore
+CODE_OF_CONDUCT.md
+CONTRIBUTING.md
+
+# DevENV
+dev-venv/
