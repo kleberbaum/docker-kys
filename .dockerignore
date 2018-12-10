@@ -31,6 +31,7 @@ __pycache__/
 .gitignore
 CODE_OF_CONDUCT.md
 CONTRIBUTING.md
+PULL_REQUEST_TEMPLATE.md
 
 # DevENV
 dev-venv/
