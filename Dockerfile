@@ -67,6 +67,8 @@ RUN echo "## Installing base ##" && \
 
 EXPOSE 8000
 
+VOLUME /code/media
+
 ADD . /code/
 
 # Call collectstatic with dummy environment variables:
@@ -76,7 +78,6 @@ RUN DATABASE_URL=mysql://none REDIS_URL=none /venv/bin/python manage.py collects
 # place init and
 # make sure static files are writable by uWSGI process
 RUN mv /code/docker-entrypoint.sh / ;\
-	chown -R 1000:2000 /code/esite/media
 
 # I personally like to start my containers with tini ^^
 # which start uWSGI, using a wrapper script to allow us to easily add
@@ -86,5 +87,5 @@ ENTRYPOINT ["/sbin/tini", "--", "/docker-entrypoint.sh"]
 CMD ["/venv/bin/uwsgi", "--http-auto-chunked", \
 						"--http-keepalive", \
 						"--static-map", \
-						"/media/=/code/esite/media/"\
+						"/media/=/code/media/"\
 ]

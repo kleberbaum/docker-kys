@@ -8,6 +8,9 @@ set -e
 
 #>&2 echo "Postgres is up - continuing"
 
+>&2 echo "correct ownership of media"
+chown -Rv 1000:2000 /code/media/
+
 if [ "$1" = '/venv/bin/uwsgi' ]; then
     /venv/bin/python manage.py migrate --noinput
 fi
