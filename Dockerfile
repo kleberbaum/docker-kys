@@ -47,6 +47,7 @@ RUN echo "## Installing base ##" && \
 	apk add --force \
 	    git@main \
 		bash@main \
+		mysql-client@main \
         tini@community \
   	\
 	&& python -m venv /venv \
