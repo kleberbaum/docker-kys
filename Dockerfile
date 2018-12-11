@@ -79,6 +79,7 @@ RUN DATABASE_URL=mysql://none REDIS_URL=none /venv/bin/python manage.py collects
 # place init and
 # make sure static files are writable by uWSGI process
 RUN mv /code/docker-entrypoint.sh / ;\
+	find /venv/ -type f -iname "*.py" -exec chmod -v +x {} \;
 
 # I personally like to start my containers with tini ^^
 # which start uWSGI, using a wrapper script to allow us to easily add
