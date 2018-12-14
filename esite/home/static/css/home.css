@@ -541,10 +541,6 @@ article input {
 
 .oculus-blink {
   z-index: 99;
-  position: absolute;
-  top: 44%;
-  left: 23.5%;
-  width: 53%;
   font-size: 4em;
   text-align: center;
 }

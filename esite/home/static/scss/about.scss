@@ -60,7 +60,7 @@
 }
 
 /*section*about-s********************************************************************************************************/
-.about{
+.about {
   position: relative;
   z-index: 0;
   background-color: $about-c;
@@ -95,10 +95,9 @@ article input {
   background-color: $about-bc;
   border-color: $about-bbc;
   background-image: url(https://erebos.xyz/PIC/grid2.png);
-
 }
 
-.box-title{
+.box-title {
   width: calc(100% - 40px);
   height: 50px;
   margin: 10px;
@@ -133,21 +132,16 @@ article input {
   background-color: $about-tc;
   user-select: none;
   background-image: url(https://erebos.xyz/PIC/grid2.png);
-  *{
+  * {
     user-select: none;
     -moz-user-select: none;
   }
 }
 
-.oculus-blink{
+.oculus-blink {
   z-index: 99;
-  position: absolute;
-  top: 44%;
-  left: 23.5%;
-  width: 53%;
   font-size: 4em;
   text-align: center;
-
 }
 
 .oculus-pic {
@@ -177,10 +171,10 @@ article input {
   filter: blur(0px);
   width: 10%;
   height: 100%;
-  &:hover{
+  &:hover {
     transform: scale(1.05);
   }
-  img{
+  img {
     -webkit-filter: invert(100%); /* Safari */
     filter: invert(100%);
   }
@@ -189,16 +183,16 @@ article input {
 .prev {
   top: 0px;
   left: 0px;
-  &:hover{
-    box-shadow: inset 20px 0px 30px 0px #FFFFFF;
+  &:hover {
+    box-shadow: inset 20px 0px 30px 0px #ffffff;
   }
 }
 
 .next {
   top: 0px;
   right: 0px;
-  &:hover{
-    box-shadow: inset -15px 0px 25px 0px #FFFFFF;
+  &:hover {
+    box-shadow: inset -15px 0px 25px 0px #ffffff;
   }
 }
 
@@ -232,7 +226,7 @@ article input {
   text-align: center;
   opacity: 1;
   animation-name: fadein;
-  animation-duration: .7s;
+  animation-duration: 0.7s;
   .oculus-nav-dot {
     width: 11px;
     height: 11px;
@@ -250,7 +244,19 @@ article input {
 }
 
 input {
-  &#about-1:checked + .about-s .oculus .oculus-nav-dots label#about-dot-1, &#about-2:checked + .about-s .oculus .oculus-nav-dots label#about-dot-2, &#about-3:checked + .about-s .oculus .oculus-nav-dots label#about-dot-3, &#about-4:checked + .about-s .oculus .oculus-nav-dots label#about-dot-4, &#about-5:checked + .about-s .oculus .oculus-nav-dots label#about-dot-5, &#about-6:checked + .about-s .oculus .oculus-nav-dots label#about-dot-6, &#about-7:checked + .about-s .oculus .oculus-nav-dots label#about-dot-7, &#about-8:checked + .about-s .oculus .oculus-nav-dots label#about-dot-8, &#about-9:checked + .about-s .oculus .oculus-nav-dots label#about-dot-9, &#about-10:checked + .about-s .oculus .oculus-nav-dots label#about-dot-10, &#about-11:checked + .about-s .oculus .oculus-nav-dots label#about-dot-11, &#about-12:checked + .about-s .oculus .oculus-nav-dots label#about-dot-12, &#about-13:checked + .about-s .oculus .oculus-nav-dots label#about-dot-13 {
+  &#about-1:checked + .about-s .oculus .oculus-nav-dots label#about-dot-1,
+  &#about-2:checked + .about-s .oculus .oculus-nav-dots label#about-dot-2,
+  &#about-3:checked + .about-s .oculus .oculus-nav-dots label#about-dot-3,
+  &#about-4:checked + .about-s .oculus .oculus-nav-dots label#about-dot-4,
+  &#about-5:checked + .about-s .oculus .oculus-nav-dots label#about-dot-5,
+  &#about-6:checked + .about-s .oculus .oculus-nav-dots label#about-dot-6,
+  &#about-7:checked + .about-s .oculus .oculus-nav-dots label#about-dot-7,
+  &#about-8:checked + .about-s .oculus .oculus-nav-dots label#about-dot-8,
+  &#about-9:checked + .about-s .oculus .oculus-nav-dots label#about-dot-9,
+  &#about-10:checked + .about-s .oculus .oculus-nav-dots label#about-dot-10,
+  &#about-11:checked + .about-s .oculus .oculus-nav-dots label#about-dot-11,
+  &#about-12:checked + .about-s .oculus .oculus-nav-dots label#about-dot-12,
+  &#about-13:checked + .about-s .oculus .oculus-nav-dots label#about-dot-13 {
     background: rgba(0, 0, 0, 0.8);
   }
 }
