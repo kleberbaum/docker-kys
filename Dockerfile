@@ -6,7 +6,7 @@ LABEL description="The erebos website more manageable w/ wagtail."
 MAINTAINER Florian Kleber <kleberbaum@erebos.xyz>
 
 # Add custom environment variables needed by Django or your settings file here:
-ENV DJANGO_DEBUG=off \
+ENV DJANGO_DEBUG=on \
 	DJANGO_SETTINGS_MODULE=esite.settings.production
 
 # uWSGI configuration (customize as needed):

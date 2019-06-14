@@ -1,5 +1,8 @@
 Django>=2.1,<2.2
 django-dotenv==1.4.1
-wagtail>=2.3,<2.4
-wagtailfontawesome>=1.1.3,<1.2
+wagtail>=2.5.1,<3
+wagtailfontawesome>=1.1.4,<1.2
 Pillow==4.0.0
+graphene-django==2.2
+graphene_django_optimizer==0.3.6
+django-cors-headers==2.4.0

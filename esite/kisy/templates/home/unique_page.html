@@ -1,0 +1,1761 @@
+{% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+
+<!DOCTYPE html>
+<html class="full-height" lang="de">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="theme-color" content="#000000" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <title>Pharmaziegasse®</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://www.aichner-christian.com/mdb/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://www.aichner-christian.com/mdb/css/mdb.min.css" rel="stylesheet">
+    <style type="text/css">
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+                "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+                sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        code {
+            font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+                monospace;
+        }
+
+        .Homepage {
+            text-align: center
+        }
+
+        .Homepage .Homepage-logo {
+            -webkit-animation: App-logo-spin 20s linear infinite;
+            animation: App-logo-spin 20s linear infinite;
+            height: 40vmin;
+            pointer-events: none
+        }
+
+        .Homepage .Homepage-header {
+            background-color: #282c34;
+            min-height: 100vh;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-direction: column;
+            flex-direction: column;
+            -webkit-align-items: center;
+            align-items: center;
+            -webkit-justify-content: center;
+            justify-content: center;
+            font-size: calc(10px + 2vmin);
+            color: #fff
+        }
+
+        .Homepage .Homepage-link {
+            color: #61dafb
+        }
+
+        @-webkit-keyframes Homepage-logo-spin {
+            0% {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg)
+            }
+
+            to {
+                -webkit-transform: rotate(1turn);
+                transform: rotate(1turn)
+            }
+        }
+
+        @keyframes Homepage-logo-spin {
+            0% {
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg)
+            }
+
+            to {
+                -webkit-transform: rotate(1turn);
+                transform: rotate(1turn)
+            }
+        }
+
+        #hero-carousel,
+        #hero-carousel .carousel-inner,
+        #hero-carousel .carousel-item,
+        #root,
+        .view,
+        body,
+        header,
+        html,
+        main {
+            height: 100%;
+            font-family: Oxfam Regular, Roboto, sans-serif;
+            font-weight: 300
+        }
+
+        @media (max-width:740px) {
+
+            #hero-carousel,
+            #hero-carousel .carousel-inner,
+            #hero-carousel .carousel-item,
+            #root,
+            .view,
+            body,
+            header,
+            html,
+            main {
+                height: 100vh
+            }
+        }
+
+        .navbar-brand img {
+            width: 250px;
+            max-width: 100%;
+            margin-top: 1rem;
+            margin-bottom: 1rem
+        }
+
+        h1 {
+            letter-spacing: 8px
+        }
+
+        .navbar-dark {
+            color: #fff !important;
+            background-color: rgba(0, 0, 0, .4) !important
+        }
+
+        .navbar-dark:not(.top-nav-collapse) {
+            background: transparent !important
+        }
+
+        @media (max-width:991px) {
+            .navbar-dark:not(.top-nav-collapse) {
+                background: rgba(0, 0, 0, .4) !important
+            }
+        }
+
+        .navbar-light {
+            background-color: hsla(0, 0%, 100%, .9) !important;
+            color: #000 !important
+        }
+
+        .navbar-light:not(.top-nav-collapse) {
+            background: hsla(0, 0%, 100%, .75) !important
+        }
+
+        @media (max-width:991px) {
+            .navbar-light:not(.top-nav-collapse) {
+                background: hsla(0, 0%, 100%, .9) !important
+            }
+        }
+
+        .btn {
+            letter-spacing: 2px
+        }
+
+        .hero-view {
+            background-repeat: no-repeat !important;
+            background-size: cover !important;
+            background-position: 50% !important
+        }
+
+        .carousel-caption {
+            right: auto !important;
+            left: auto !important;
+            width: 100%;
+            z-index: 2
+        }
+
+        header .carousel-control-prev {
+            color: hsla(0, 0%, 100%, .9)
+        }
+
+        header .carousel-control-prev:before {
+            content: "\2039";
+            font-size: 5rem;
+            transition: .4s
+        }
+
+        header .carousel-control-next {
+            color: hsla(0, 0%, 100%, .9)
+        }
+
+        header .carousel-control-next:before {
+            content: "\203A";
+            font-size: 5rem;
+            transition: .4s
+        }
+
+        header .carousel-control-next:focus,
+        header .carousel-control-prev:focus {
+            color: hsla(0, 0%, 100%, .9)
+        }
+
+        header .carousel-control-next:hover,
+        header .carousel-control-prev:hover {
+            color: #fff
+        }
+
+        .hero-gradient {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            display: inline-block;
+            background: linear-gradient(180deg, rgba(0, 0, 0, .6) 0, hsla(0, 0%, 100%, .1));
+            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#002f4b", endColorstr="#00000000", GradientType=0)
+        }
+
+        h5 {
+            letter-spacing: 3px
+        }
+
+        .hr-light {
+            border-top: 3px solid #fff;
+            width: 80px
+        }
+
+        section {
+            padding-top: 3rem !important;
+            padding-bottom: 3rem !important
+        }
+
+        .section-blue {
+            background-color: #9dbdd6;
+            color: #fff
+        }
+
+        .section-lightblue {
+            background-color: #eff4f8;
+            color: #212529
+        }
+
+        .section-white {
+            background-color: #fff;
+            color: #212529
+        }
+
+        .section-grey {
+            background-color: #545456;
+            color: #fff
+        }
+
+        .section-lightgrey {
+            background-color: #f3f3f3;
+            color: #212529
+        }
+
+        .section0-row .col-md-4 {
+            padding-left: 3rem;
+            padding-right: 3rem
+        }
+
+        .section0-row .col-md-4:first-child {
+            border-right: 1px solid #fff
+        }
+
+        .section0-row .col-md-4:last-child {
+            border-left: 1px solid #fff
+        }
+
+        @media (max-width:740px) {
+            .section0-row .col-md-4:first-child {
+                border-right: none;
+                border-bottom: 1px solid #fff;
+                padding-bottom: 1rem;
+                margin-bottom: 1rem
+            }
+
+            .section0-row .col-md-4:last-child {
+                border-left: none;
+                border-top: 1px solid #fff;
+                padding-top: 1rem;
+                margin-top: 1rem
+            }
+        }
+
+        .section0-row img {
+            max-height: 125px;
+            width: auto;
+            margin-bottom: 1rem;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -o-user-select: none;
+            -ms-user-select: none;
+            user-select: none
+        }
+
+        #customer-carousel {
+            background: #fff
+        }
+
+        #interview-carousel .carousel-indicators {
+            position: relative;
+            margin-left: auto !important;
+            margin-right: auto !important
+        }
+
+        #interview-carousel .btn-floating span {
+            display: inline-block;
+            width: inherit;
+            text-align: center;
+            color: #545456;
+            font-size: 1.625rem;
+            line-height: 61.1px
+        }
+
+        #interview-carousel .carousel-indicators button {
+            border: none;
+            outline: none;
+            background: #f9f9f9;
+            box-shadow: none
+        }
+
+        #interview-carousel .carousel-indicators .active {
+            background: #fff
+        }
+
+        #interview-carousel {
+            position: relative;
+            z-index: 0
+        }
+
+        .num-display {
+            position: absolute;
+            color: #fff;
+            font-size: 15rem;
+            line-height: 15rem;
+            left: 20%;
+            z-index: -1;
+            top: 0
+        }
+
+        .asbest {
+            width: 660px
+        }
+
+        .asbest,
+        .asbest .sphere {
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-direction: column;
+            flex-direction: column
+        }
+
+        .asbest .sphere {
+            z-index: 1;
+            position: relative;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-align-items: center;
+            align-items: center;
+            padding-top: 30px;
+            width: 220px;
+            height: 220px;
+            border-radius: 100%
+        }
+
+        .asbest .sphere p {
+            width: 170px
+        }
+
+        .asbest .sphere:before {
+            display: -webkit-flex;
+            display: flex;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-align-items: center;
+            align-items: center;
+            position: absolute;
+            top: -30px;
+            left: calc(50% - 30px);
+            width: 60px;
+            height: 60px;
+            border-radius: 100%
+        }
+
+        .asbest .sphere:after {
+            z-index: -1;
+            position: absolute;
+            content: "";
+            width: 35px;
+            height: 2.5px
+        }
+
+        .asbest .r {
+            -webkit-flex: 1 1;
+            flex: 1 1;
+            display: -webkit-flex;
+            display: flex
+        }
+
+        .asbest .r1 {
+            -webkit-justify-content: center;
+            justify-content: center;
+            margin-bottom: -4em
+        }
+
+        .asbest .r2 {
+            -webkit-justify-content: space-between;
+            justify-content: space-between
+        }
+
+        .asbest .r3 {
+            -webkit-justify-content: center;
+            justify-content: center;
+            margin-top: -4em
+        }
+
+        .asbest .s1 {
+            background-color: #9dbdd6;
+            color: #fff
+        }
+
+        .asbest .s1:before {
+            content: "1";
+            background-color: #fff;
+            color: #212529
+        }
+
+        .asbest .s1:after {
+            bottom: 66px;
+            right: -20px;
+            -webkit-transform: rotate(33deg);
+            transform: rotate(33deg);
+            background-color: #9dbdd6
+        }
+
+        .asbest .s1 a {
+            color: #fff
+        }
+
+        .asbest .s1 a:hover {
+            color: #f9f9f9
+        }
+
+        .asbest .s2 {
+            background-color: #fff;
+            color: #9dbdd6
+        }
+
+        .asbest .s2:before {
+            content: "2";
+            background-color: #9dbdd6;
+            color: #fff
+        }
+
+        .asbest .s2:after {
+            bottom: 36px;
+            left: 0;
+            -webkit-transform: rotate(135deg);
+            transform: rotate(135deg);
+            background-color: #fff
+        }
+
+        .asbest .s2 a {
+            color: #9dbdd6
+        }
+
+        .asbest .s2 a:hover {
+            color: #95b2c9
+        }
+
+        .asbest .s3 {
+            background-color: #9dbdd6;
+            color: #fff
+        }
+
+        .asbest .s3:before {
+            top: unset;
+            bottom: -30px;
+            content: "3";
+            background-color: #fff;
+            color: #212529
+        }
+
+        .asbest .s3:after {
+            top: 66px;
+            left: -20px;
+            -webkit-transform: rotate(33deg);
+            transform: rotate(33deg);
+            background-color: #9dbdd6
+        }
+
+        .asbest .s3 a {
+            color: #fff
+        }
+
+        .asbest .s3 a:hover {
+            color: #f9f9f9
+        }
+
+        .asbest .s4 {
+            background-color: #fff;
+            color: #9dbdd6
+        }
+
+        .asbest .s4:before {
+            content: "4";
+            background-color: #9dbdd6;
+            color: #fff
+        }
+
+        .asbest .s4:after {
+            top: 37px;
+            right: 0;
+            -webkit-transform: rotate(135deg);
+            transform: rotate(135deg);
+            background-color: #fff
+        }
+
+        .asbest .s4 a {
+            color: #9dbdd6
+        }
+
+        .asbest .s4 a:hover {
+            color: #95b2c9
+        }
+
+        .graviola-container {
+            position: relative;
+            width: 22em;
+            height: 22em;
+            margin-bottom: 8.66667em !important;
+            margin-top: 8.66667em !important;
+            padding: 0;
+            border-radius: 50%;
+            list-style: none;
+            box-sizing: initial;
+            margin: 5em auto 0;
+            border: 5px solid #9dbdd6
+        }
+
+        .graviola-container>* {
+            display: block;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 13em;
+            height: 13em;
+            margin: -6.5em
+        }
+
+        .graviola-container>:first-of-type {
+            -webkit-transform: rotate(0deg) translate(11em) rotate(0deg);
+            transform: rotate(0deg) translate(11em) rotate(0deg)
+        }
+
+        .graviola-container>:nth-of-type(2) {
+            -webkit-transform: rotate(90deg) translate(11em) rotate(-90deg);
+            transform: rotate(90deg) translate(11em) rotate(-90deg)
+        }
+
+        .graviola-container>:nth-of-type(3) {
+            -webkit-transform: rotate(180deg) translate(11em) rotate(-180deg);
+            transform: rotate(180deg) translate(11em) rotate(-180deg)
+        }
+
+        .graviola-container>:nth-of-type(4) {
+            -webkit-transform: rotate(270deg) translate(11em) rotate(-270deg);
+            transform: rotate(270deg) translate(11em) rotate(-270deg)
+        }
+
+        .graviola-container .circle {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            display: -webkit-flex;
+            display: flex;
+            -webkit-flex-direction: column;
+            flex-direction: column;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-align-items: center;
+            align-items: center;
+            padding: 1em
+        }
+
+        .graviola-container .circle p {
+            margin-bottom: .5em;
+            font-size: 1em
+        }
+
+        .graviola-container .circle p:last-child {
+            margin-bottom: 0
+        }
+
+        .graviola-container .circle:before {
+            display: -webkit-flex;
+            display: flex;
+            -webkit-justify-content: center;
+            justify-content: center;
+            -webkit-align-items: center;
+            align-items: center;
+            position: absolute;
+            top: -30px;
+            left: calc(50% - 30px);
+            width: 60px;
+            height: 60px;
+            border-radius: 100%
+        }
+
+        .graviola-container .circle-blue {
+            background-color: #9dbdd6
+        }
+
+        .graviola-container .circle-blue a,
+        .graviola-container .circle-blue p {
+            color: #fff
+        }
+
+        .graviola-container .circle-blue a:hover {
+            color: #f9f9f9
+        }
+
+        .graviola-container .circle-white {
+            background-color: #fff
+        }
+
+        .graviola-container .circle-white a,
+        .graviola-container .circle-white p {
+            color: #9dbdd6
+        }
+
+        .graviola-container .circle-white a:hover {
+            color: #95b2c9
+        }
+
+        .graviola-container .c1:before {
+            content: "1";
+            background-color: #fff;
+            color: #9dbdd6
+        }
+
+        .graviola-container .c2:before {
+            content: "2";
+            background-color: #9dbdd6;
+            color: #fff
+        }
+
+        .graviola-container .c3:before {
+            content: "3";
+            top: unset !important;
+            bottom: -30px;
+            background-color: #fff;
+            color: #9dbdd6
+        }
+
+        .graviola-container .c4:before {
+            content: "4";
+            background-color: #9dbdd6;
+            color: #fff
+        }
+
+        @media (max-width:740px) {
+            .graviola-container {
+                position: relative;
+                width: 11em;
+                height: 11em;
+                margin-bottom: 4.66667em !important;
+                margin-top: 4.66667em !important;
+                padding: 0;
+                border-radius: 50%;
+                list-style: none;
+                box-sizing: initial;
+                margin: 5em auto 0;
+                border: 5px solid #9dbdd6
+            }
+
+            .graviola-container>* {
+                display: block;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                width: 7em;
+                height: 7em;
+                margin: -3.5em
+            }
+
+            .graviola-container>:first-of-type {
+                -webkit-transform: rotate(0deg) translate(5.5em) rotate(0deg);
+                transform: rotate(0deg) translate(5.5em) rotate(0deg)
+            }
+
+            .graviola-container>:nth-of-type(2) {
+                -webkit-transform: rotate(90deg) translate(5.5em) rotate(-90deg);
+                transform: rotate(90deg) translate(5.5em) rotate(-90deg)
+            }
+
+            .graviola-container>:nth-of-type(3) {
+                -webkit-transform: rotate(180deg) translate(5.5em) rotate(-180deg);
+                transform: rotate(180deg) translate(5.5em) rotate(-180deg)
+            }
+
+            .graviola-container>:nth-of-type(4) {
+                -webkit-transform: rotate(270deg) translate(5.5em) rotate(-270deg);
+                transform: rotate(270deg) translate(5.5em) rotate(-270deg)
+            }
+
+            .graviola-container .circle {
+                display: block;
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+                display: -webkit-flex;
+                display: flex;
+                -webkit-flex-direction: column;
+                flex-direction: column;
+                -webkit-justify-content: center;
+                justify-content: center;
+                -webkit-align-items: center;
+                align-items: center;
+                padding: 1em
+            }
+
+            .graviola-container .circle p {
+                margin-bottom: .5em;
+                font-size: .7em
+            }
+
+            .graviola-container .circle p:last-child {
+                margin-bottom: 0
+            }
+
+            .graviola-container .circle:before {
+                display: -webkit-flex;
+                display: flex;
+                -webkit-justify-content: center;
+                justify-content: center;
+                -webkit-align-items: center;
+                align-items: center;
+                position: absolute;
+                top: -20px;
+                left: calc(50% - 20px);
+                width: 40px;
+                height: 40px;
+                border-radius: 100%
+            }
+
+            .graviola-container .circle-blue {
+                background-color: #9dbdd6
+            }
+
+            .graviola-container .circle-blue a,
+            .graviola-container .circle-blue p {
+                color: #fff
+            }
+
+            .graviola-container .circle-blue a:hover {
+                color: #f9f9f9
+            }
+
+            .graviola-container .circle-white {
+                background-color: #fff
+            }
+
+            .graviola-container .circle-white a,
+            .graviola-container .circle-white p {
+                color: #9dbdd6
+            }
+
+            .graviola-container .circle-white a:hover {
+                color: #95b2c9
+            }
+
+            .graviola-container .c1:before {
+                content: "1";
+                background-color: #fff;
+                color: #9dbdd6
+            }
+
+            .graviola-container .c2:before {
+                content: "2";
+                background-color: #9dbdd6;
+                color: #fff
+            }
+
+            .graviola-container .c3:before {
+                content: "3";
+                top: unset !important;
+                bottom: -20px;
+                background-color: #fff;
+                color: #9dbdd6
+            }
+
+            .graviola-container .c4:before {
+                content: "4";
+                background-color: #9dbdd6;
+                color: #fff
+            }
+        }
+
+        .page-footer .container {
+            border-top: 2px solid #000
+        }
+
+        footer.page-footer a {
+            color: #212529;
+            text-transform: uppercase
+        }
+
+        footer .email-link {
+            text-transform: none !important
+        }
+
+        footer .switch label input[type=checkbox]:checked+.lever {
+            background-color: #9dbdd6 !important
+        }
+
+        footer .switch label .lever {
+            background-color: #d3d3d3
+        }
+
+        footer .lever:after {
+            background-color: #f1f1f1 !important
+        }
+
+        .premium,
+        .pricing-card {
+            box-shadow: none;
+            border-radius: 0
+        }
+
+        .pricing-card h3 {
+            color: #9dbdd6
+        }
+
+        .pricing-card .pricing-description {
+            background-color: #9dbdd6;
+            color: #fff
+        }
+
+        .premium .pricing-description {
+            background-color: #2a3c4a;
+            color: #fff
+        }
+
+        .premium h3 {
+            color: #2a3c4a
+        }
+
+        .font-weight-bold {
+            font-family: Oxfam Headline, sans-serif
+        }
+
+        .pricetag {
+            font-family: Oxfam Bold, sans-serif;
+            font-size: .9rem;
+            letter-spacing: 1px;
+            color: #9dbdd6
+        }
+
+        ::-webkit-scrollbar-track {
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+            background-color: #f5f5f5
+        }
+
+        ::-webkit-scrollbar {
+            width: 12px;
+            background-color: #f5f5f5
+        }
+
+        ::-webkit-scrollbar-thumb {
+            -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3);
+            background-color: #555
+        }
+
+        .register-form .input-grp i {
+            position: absolute;
+            right: 50px;
+            margin-top: 10px;
+            cursor: pointer
+        }
+
+        .register-form input {
+            outline: none;
+            border-radius: 20px
+        }
+
+        .register-form button {
+            text-transform: none
+        }
+
+        .register-form button i {
+            color: inherit !important
+        }
+
+        .register-form .splitter {
+            overflow: hidden
+        }
+
+        .register-form .or {
+            position: relative !important;
+            padding: 16px !important;
+            padding: var(--spacing-rule-text-vertical, 16px) var(--spacing-rule-text-horizontal, 16px) !important
+        }
+
+        .register-form .or-text {
+            overflow-wrap: break-word !important;
+            margin: 0 !important
+        }
+
+        .register-form .or-text:before {
+            right: 100% !important
+        }
+
+        .register-form .or-text:after,
+        .register-form .or-text:before {
+            content: "" !important;
+            position: absolute !important;
+            border-bottom: 1px solid #e4e4e4 !important;
+            top: 50% !important;
+            width: 5000px !important
+        }
+
+        .register-form .or-text:after {
+            left: 100% !important
+        }
+
+        /*# sourceMappingURL=main.9d17f7e7.chunk.css.map */
+    </style>
+
+</head>
+
+<body class="pace-done" aria-busy="true">
+    <div class="pace  pace-inactive">
+        <div class="pace-progress" data-progress-text="100%" data-progress="99" style="width: 100%;">
+            <div class="pace-progress-inner"></div>
+        </div>
+        <div class="pace-activity"></div>
+    </div><noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root">
+      <main class="Homepage">
+<header id="home">
+  <nav
+    class="navbar navbar-expand-lg fixed-top scrolling-navbar navbar-dark text-white z-depth-0 top-nav-collapse">
+    <div class="container"><a class="navbar-brand sscroll"
+        href="http://localhost:3000/?token=Pharmaziegasse-9020#home"><strong><img
+            src="./Pharmaziegasse®_files/white.b858081a.png" alt="Pharmaziegasse Logo"></strong></a><button
+        class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
+          class="navbar-toggler-icon"></span></button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto d-flex justify-content-center align-items-center">
+          <li class="nav-item"><a class="nav-link m-1 sscroll"
+              href="http://localhost:3000/?token=Pharmaziegasse-9020#why">Warum PHARMAZIEGASSE<sup>®</sup>?</a>
+          </li>
+          <li class="nav-item"><a class="nav-link m-1 sscroll"
+              href="http://localhost:3000/?token=Pharmaziegasse-9020#method">Wie funktioniert es?</a></li>
+          <li class="nav-item"><a class="nav-link m-1 sscroll"
+              href="http://localhost:3000/?token=Pharmaziegasse-9020#pricing">Preise</a></li>
+          <li class="nav-item"><a class="nav-link m-1 sscroll"
+              href="http://localhost:3000/?token=Pharmaziegasse-9020#about">Über uns</a></li>
+          <li class="nav-item"><button data-toggle="modal" data-target="#modalRegister"
+              class="btn btn-white btn-rounded font-weight-bold d-none d-sm-block">Loslegen</button></li>
+          <li class="nav-item"><a class="nav-link m-1 d-block d-sm-none"
+              href="http://localhost:3000/getting-started">Loslegen</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  {% for h in page.headers %}
+  {% if h.block_type == 'h_hero' %}
+  <div id="hero-carousel" class="carousel slide carousel-fade" data-ride="carousel">
+      <ol class="carousel-indicators">
+          {% for s in h.value %}
+              {% if forloop.counter == 1 %}
+                  <li data-target="#hero-carousel" data-slide-to="0" class="active"></li>
+              {% else %}
+                  <li data-target="#hero-carousel" data-slide-to="{{ forloop.counter|add:'-1' }}"></li>
+              {% endif %}
+          {% endfor %}
+      </ol>
+
+      <div class="carousel-inner" role="listbox">
+
+        {% for s in h.value %}
+          {% if forloop.counter == 1 %}
+          <div class="carousel-item active">
+          {% else %}
+          <div class="carousel-item">
+          {% endif %}
+              <div class="view hero-view" style="background-image: url(&quot;https://erebos.xyz/user/Toko/bg0.jpg&quot;);">
+                  <div class="mask hero-gradient d-flex justify-content-center align-items-center">
+                      <div class="container">
+                          <div class="row">
+                              <div class="col-md-12 mb-4 white-text text-left">
+                                  <div class="hero-content">
+                                      <h1 class="h1-reponsive white-text text-uppercase font-weight-bold mb-0 pt-md-5 pt-5 wow fadeInDown"
+                                          data-wow-delay="0.3s"><strong>
+                                            {{ s.slide_head }}
+                                          </strong></h1>
+                                      <h3 class="my-5 white-text wow fadeInDown" data-wow-delay="0.4s">
+                                          <strong>
+                                            {{ s.slide_subhead }}
+                                          </strong>
+                                      </h3>
+                                      <a href="{{ h.slide_button.button_link }}" class="btn btn-white btn-rounded btn-lg wow fadeInDown font-weight-bold">
+                                          {{ s.slide_button }}
+                                      </a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="carousel-caption pl-5 pr-5">
+                  <div class="row white-text">
+                      <div class="col-md-12 text-right">
+                          <p class="hero-counter d-none">{{ forloop.counter }} - {{ page.headers|length }}</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+
+          {% endfor %}
+
+          <div class="carousel-caption pl-5 pr-5">
+              <div class="row white-text">
+                  <div class="col-md-12 text-left"><a
+                          href="https://www.instagram.com/friendsofpharmaziegasse/" class="m-2 white-text"
+                          rel="noopener noreferrer" target="_blank"><i class="fab fa-instagram"></i></a><a
+                          href="https://www.facebook.com/Friends-of-Pharmaziegasse-309175709736059/"
+                          class="m-2 white-text" rel="noopener noreferrer" target="_blank"><i
+                              class="fab fa-facebook-f"></i></a></div>
+              </div>
+          </div>
+      </div><a class="carousel-control-prev" href="#hero-carousel" role="button" data-slide="prev"></a><a
+          class="carousel-control-next" href="#hero-carousel" role="button" data-slide="next"></a>
+  </div>
+  {% endif %}
+  {% endfor %}
+</header>
+
+{% for s in page.sections %}
+{% if s.block_type == 's_why' %}
+<section id="why" style="background-color: {{ s.value.why_background }};">
+  <div class="container text-center py-5 section-text-white">
+    <h2 class="font-weight-bold">{{ s.value.why_head }}</h2>
+    <div class="row section0-row my-5">
+      <div class="col-md-4">
+        <div class="row">
+          <div class="col-12">{% image s.value.why_collum1.collum_image original draggable="false" class="img-fluid" %}</div>
+          <div class="col-12">
+            {{ s.value.why_collum1.collum_paragraph|richtext }}
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="row">
+          <div class="col-12">{% image s.value.why_collum2.collum_image original draggable="false" class="img-fluid" %}</div>
+          <div class="col-12">
+            {{ s.value.why_collum2.collum_paragraph|richtext }}
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="row">
+          <div class="col-12">{% image s.value.why_collum3.collum_image original draggable="false" class="img-fluid" %}</div>
+          <div class="col-12">
+            {{ s.value.why_collum3.collum_paragraph|richtext }}
+          </div>
+        </div>
+      </div>
+    </div><button data-toggle="modal" data-target="#modalRegister"
+      class="btn btn-white btn-rounded font-weight-bold">Beautyprogramm starten</button>
+  </div>
+</section>
+{% endif %}
+{% endfor %}
+
+{% for s in page.sections %}
+{% if s.block_type == 's_facebook' %}
+<section id="facebook" style="background-color: {{ s.value.facebook_background }};">
+  <div class="container py-5 section-text-grey">
+    <h2 class="font-weight-bold">{{ s.value.facebook_head }}</h2>
+    <div class="row mt-4 w-100">
+    {% for f in s.value.facebook_urls %}
+      <div class="col-md-4 mt-4">
+        <div>
+            <div class="fb-post fb_iframe_widget"
+                 data-href="{{ s.value.facebook_url }}"
+                 data-width="300"
+                 fb-xfbml-state="rendered"
+                 fb-iframe-plugin-query="app_id=438514240304319&amp;container_width=340&amp;href=https%3A%2F%2Fwww.facebook.com%2Fpharmaziegasse%2Fphotos%2Fa.312926582694305%2F360136474639982&amp;locale=en_US&amp;sdk=joey&amp;width=300">
+                 <span style="vertical-align: bottom; width: 350px; height: 440px;">
+                    <iframe name="f34536d5e98c2"
+                            width="300px"
+                            height="1000px"
+                            frameborder="0"
+                            allowtransparency="true"
+                            allowfullscreen="true"
+                            scrolling="no"
+                            allow="encrypted-media"
+                            title="fb:post Facebook Social Plugin"
+                            src="https://web.facebook.com/v3.1/plugins/post.php?app_id=438514240304319&amp;channel=https%3A%2F%2Fstaticxx.facebook.com%2Fconnect%2Fxd_arbiter.php%3Fversion%3D44%23cb%3Df81bbd441994a%26domain%3Dwww.pharmaziegasse.at%26origin%3Dhttps%253A%252F%252Fwww.pharmaziegasse.at%252Ff212f1508deccdc%26relation%3Dparent.parent&amp;container_width=340&amp;href=https%3A%2F%2Fwww.facebook.com%2Fpharmaziegasse%2Fphotos%2Fa.312926582694305%2F360136474639982&amp;locale=en_US&amp;sdk=joey&amp;width=300" style="border: none; visibility: visible; width: 350px; height: 440px;" class="">
+                    </iframe>
+                </span>
+            </div>
+        </div>
+      </div>
+    {% endfor %}
+</section>
+{% endif %}
+{% endfor %}
+
+{% for s in page.sections %}
+{% if s.block_type == 's_experts' %}
+<section id="experts" style="background-color: {{ s.value.experts_background }};">
+    <div class="container pt-5 text-left section-text-grey">
+        <h2 class="font-weight-bold">{{ s.value.experts_head }}</h2>
+        <div class="row mt-5">
+        <div class="col-md-6">
+            <div class="row">
+            <div class="col-12 mb-5">{% image s.value.experts_image original draggable="false" class="img-fluid" %}</div>
+            <div class="col-12"><button data-toggle="modal" data-target="#modalRegister"
+                class="btn btn-white btn-rounded font-weight-bold">Beautyprogramm starten</button></div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="lead">
+              {{ s.value.experts_lead|richtext}}
+            </div>
+            <div>
+              {{ s.value.experts_paragraph|richtext }}
+            </div>
+        </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+{% endfor %}
+
+{% for s in page.sections %}
+{% if s.block_type == 's_services' %}
+<section id="quotes" class="section-lightgrey">
+<div class="container py-5">
+<div class="wrapper-carousel-fix">
+<div id="interview-carousel" class="carousel no-flex testimonial-carousel slide dark-grey-text"
+data-ride="carousel" data-interval="10000">
+<ol class="carousel-indicators"><button data-target="#interview-carousel" data-slide-to="0"
+class="btn-floating btn-lg active"><span>1</span></button><button
+data-target="#interview-carousel" data-slide-to="1"
+class="btn-floating btn-lg"><span>2</span></button><button
+data-target="#interview-carousel" data-slide-to="2"
+class="btn-floating btn-lg"><span>3</span></button><button
+data-target="#interview-carousel" data-slide-to="3"
+class="btn-floating btn-lg"><span>4</span></button></ol>
+<div class="carousel-inner py-5" role="listbox">
+<div class="carousel-item active">
+<div class="testimonial pb-5">
+    <div class="num-display font-weight-bold"><span>01</span></div>
+    <h2 class="h1-responsive font-weight-bold mb-5">Befund und Diagnose von unseren</h2>
+    <div>
+        <p>Im Rahmen eines ausführlichen Gesprächs mit unserem Beautycoach lernen
+            wir deine Haut kennen. Wir sprechen über Ihre individuelle Haut- und
+            Lebenssituation, tauschen Informationen aus, die für Sie und Ihre
+            Hautpflege wichtig sind. Es werden alle Faktoren besprochen, die Ihre
+            individuelle Hautsituation beeinflussen. Alles wird genau erfasst, um
+            Ihren individuellen Beautyreport zu erstellen. Was genau wir mit Ihnen
+            besprechen finden Sie im Interviewleitfaden.</p>
+    </div>
+    <h4 class="font-weight-bold"></h4>
+    <h6 class="font-weight-bold my-3 text-muted"></h6>
+</div>
+</div>
+<div class="carousel-item">
+<div class="testimonial pb-5">
+    <div class="num-display font-weight-bold"><span>02</span></div>
+    <h2 class="h1-responsive font-weight-bold mb-5">Befund und Diagnose von unseren
+        Experten</h2>
+    <div>
+        <p>Ihr persönlicher Beautyreport besteht aus zwei Teilen. Im ersten Teil
+            finden Sie Ihren Befunde, Ihren persönlichen Beautypass.</p>
+        <p></p>
+        <p>Der Beautypass gewährleistet, dass wir passend zu Ihren Anforderungen
+            immer genau wissen, welches Beautyprogramm für Sie geeignet ist. Dies
+            ist sozusagen die Eintrittskarte zu unseren Behandlungsprogrammen.</p>
+        <p></p>
+        <p>Im zweiten Teil des Beautyreports erfolgt eine ausführliche Diagnose
+            Ihres Hautzustandes. Alle Informationen aus dem Beautypass werden
+            sukzessive ausgewertet und die Ergebnisse übersichtlich und verständlich
+            aufbereitet. Auf Basis dieser Analyse spricht unser Expertenteam seine
+            Empfehlung für die Zusammensetzung der Inhaltsstoffe Ihres individuellen
+            Pflegeprogrammes aus. Alle Inhaltsstoffe werden präzise auf Ihre Haut
+            abgestimmt und gewährleistet damit eine effective und wirksame
+            Hautpflege.</p>
+    </div>
+    <h4 class="font-weight-bold"></h4>
+    <h6 class="font-weight-bold my-3 text-muted"></h6>
+</div>
+</div>
+<div class="carousel-item">
+<div class="testimonial pb-5">
+    <div class="num-display font-weight-bold"><span>03</span></div>
+    <h2 class="h1-responsive font-weight-bold mb-5">Individuelles und natürliches
+        Beautyprogramm</h2>
+    <div>
+        <p>Basierend auf Ihrem Befund werden die für Ihre Haut passenden Produkte
+            mit den für dich ausgewählten Rezepturen frisch zubereitet. Begleitet
+            von einem detaillierten Behandlungsplan werden Ihre Pflegeprodukte auf
+            dem schnellsten Wege zu dir gebracht. Der Behandlungsplan sagt Ihnen
+            genau, wann Sie welche Pflege und in welchen Umfang anwenden sollen und
+            wie oft. Sollten während der Anwendung Fragen oder Probleme auftauchen,
+            können Sie sich jederzeit bei Ihrem Beautycoach melden. Dieser wird Sie
+            bei allen Herausforderungen unterstützen.</p>
+    </div>
+    <h4 class="font-weight-bold"></h4>
+    <h6 class="font-weight-bold my-3 text-muted"></h6>
+</div>
+</div>
+<div class="carousel-item">
+<div class="testimonial pb-5">
+    <div class="num-display font-weight-bold"><span>04</span></div>
+    <h2 class="h1-responsive font-weight-bold mb-5">Laufende persönliche Betreuung
+    </h2>
+    <div>
+        <p>Wir lassen Sie nach der erstmaligen Anwendung der Produkte nicht im
+            Stich, denn wir wollen wissen und laufend überprüfen, ob die Pflege
+            wirksam ist und Ihren persönlichen Bedürfnissen entsprechen.</p>
+        <p></p>
+        <p>Es gibt viele Faktoren, die das Hautbild und den Hauttyp beeinflussen und
+            auch verändern können Abhängig von Ihrer Lebensphase, der Jahreszeit,
+            Klimazone, Ihrem beruflichen Umfeld, persönlichen Umständen
+            (Schwangerschaft, Hormonänderungen) können sich Ihre Anforderungen an
+            die Inhaltsstoffe immer wieder ändern. Daher werden alle unsere
+            Programme laufend angepasst werden. Als Mitglied unseres Beautyprogramms
+            können Sie sich darauf verlassen - ohne dass Sie sich selbst darum
+            kümmern müssen -, dass Ihre Haut den Umständen entsprechend optimal
+            versorgt wird. So können Sie sich um andere wichtige Dinge im Leben
+            kümmern.</p>
+    </div>
+    <h4 class="font-weight-bold"></h4>
+    <h6 class="font-weight-bold my-3 text-muted"></h6>
+</div>
+</div>
+</div><a class="carousel-control-prev left carousel-control" href="#interview-carousel"
+role="button" data-slide="prev"><span class="icon-prev" aria-hidden="true"></span><span
+class="sr-only">Previous</span></a><a
+class="carousel-control-next right carousel-control" href="#interview-carousel"
+role="button" data-slide="next"><span class="icon-next" aria-hidden="true"></span><span
+class="sr-only">Next</span></a>
+</div>
+</div><a href="" class="btn btn-outline-elegant btn-rounded font-weight-bold">cock</a>
+</div>
+</section>
+{% endif %}
+{% endfor %}
+
+{% for s in page.sections %}
+{% if s.block_type == 's_individual' %}
+<section id="individual" style="background-color: {{ s.value.individual_background }};">
+  <div class="container py-5 text-left section-text-grey">
+    <h2 class="font-weight-bold">{{ s.value.individual_head }}</h2>
+    <div class="row my-5">
+      <div class="col-md-6">
+        <div class="lead">
+          {{ s.value.individual_lead|richtext }}
+        </div>
+        <div>
+          {{ s.value.individual_paragraph|richtext }}
+        </div>
+      </div>
+      <div class="col-md-6 text-center">
+        <div class="row">
+          <div class="col-12 mb-5">{% image s.value.individual_image original draggable="false" class="img-fluid" %}</div>
+          <div class="col-12"><button data-toggle="modal" data-target="#modalRegister"
+              class="btn btn-white btn-rounded font-weight-bold">Beautyprogramm starten</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+{% endfor %}
+
+{% for s in page.sections %}
+{% if s.block_type == 's_method' %}
+<section id="method" style="background-color: {{ s.value.method_background }};">
+  <div class="container py-5 section-text-white">
+    <h2 class="h1-responsive font-weight-bold mb-5 pb-5">{{ s.value.method_head }}</h2>
+    <ul class="graviola-container d-block d-sm-none">
+      <li>
+        <div class="circle circle-white c2">
+          {{ s.value.method_sphere1.sphere_step|richtext }}
+        </div>
+      </li>
+      <li>
+        <div class="circle circle-blue c3">
+          {{ s.value.method_sphere2.sphere_step|richtext }}
+        </div>
+      </li>
+      <li>
+        <div class="circle circle-white c4">
+          {{ s.value.method_sphere3.sphere_step|richtext }}
+        </div>
+      </li>
+      <li>
+        <div class="circle circle-blue c1">
+          {{ s.value.method_sphere4.sphere_step|richtext }}
+        </div>
+      </li>
+    </ul>
+    <div class="asbest ml-auto mr-auto mb-5 d-none d-sm-block">
+      <div class="r r1">
+        <div class="c c2">
+          <div class="sphere s1">
+            {{ s.value.method_sphere1.sphere_step|richtext }}
+          </div>
+        </div>
+      </div>
+      <div class="r r2">
+        <div class="c c1">
+          <div class="sphere s4">
+            {{ s.value.method_sphere2.sphere_step|richtext }}
+          </div>
+        </div>
+        <div class="c c3">
+          <div class="sphere s2">
+            {{ s.value.method_sphere3.sphere_step|richtext }}
+          </div>
+        </div>
+      </div>
+      <div class="r r3">
+        <div class="c c2">
+          <div class="sphere s3">
+            {{ s.value.method_sphere4.sphere_step|richtext }}
+          </div>
+        </div>
+      </div>
+    </div><button data-toggle="modal" data-target="#modalRegister"
+      class="btn btn-white btn-rounded font-weight-bold">Beautyprogramm starten</button>
+  </div>
+</section>
+{% endif %}
+{% endfor %}
+
+{% for s in page.sections %}
+{% if s.block_type == 's_instagram' %}
+<section id="gallery" style="background-color: {{ s.value.instagram_background }};">
+  <div class="container instagram py-5 section-text-grey">
+    <h2 class="font-weight-bold">{{ s.value.instagram_head }}</h2>
+    <div class="row mt-4">
+        {% for f in s.value.instagram_urls %}
+        <div class="col-md-6">
+          <div><iframe class="instagram-media instagram-media-rendered" id="instagram-embed-0"
+              src="./Pharmaziegasse®_files/saved_resource.html" allowtransparency="true" allowfullscreen="true"
+              frameborder="0" height="702" data-instgrm-payload-id="instagram-media-payload-0" scrolling="no"
+              style="background: white; max-width: 320px; width: calc(100% - 2px); border-radius: 3px; border: 1px solid rgb(219, 219, 219); box-shadow: none; display: block; margin: 0px 0px 12px; min-width: 326px; padding: 0px;"></iframe>
+          </div>
+        </div>
+      {% endfor %}
+      <div class="col-md-6">
+        <div><iframe class="instagram-media instagram-media-rendered" id="instagram-embed-1"
+            src="./Pharmaziegasse®_files/saved_resource(1).html" allowtransparency="true" allowfullscreen="true"
+            frameborder="0" height="728" data-instgrm-payload-id="instagram-media-payload-1" scrolling="no"
+            style="background: white; max-width: 320px; width: calc(100% - 2px); border-radius: 3px; border: 1px solid rgb(219, 219, 219); box-shadow: none; display: block; margin: 0px 0px 12px; min-width: 326px; padding: 0px;"></iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+{% endfor %}
+
+{% for s in page.sections %}
+{% if s.block_type == 's_services' %}
+<section id="reviews" style="background-color: rgb(157, 189, 214);">
+  <div class="container py-5 section-text-grey">
+    <h2 class="h1-responsive font-weight-bold mb-5">Was unsere Kunden sagen</h2>
+    <div class="wrapper-carousel-fix">
+      <div id="customer-carousel" class="carousel no-flex testimonial-carousel slide py-5 dark-grey-text"
+        data-ride="carousel" data-interval="20000">
+        <div class="carousel-inner" role="listbox">
+          <div class="carousel-item active">
+            <div class="testimonial">
+              <div class="avatar mx-auto mb-4"><img width="160px" height="160px"
+                  src="./Pharmaziegasse®_files/1.93169b00.jpg" class="rounded-circle img-fluid" alt="Bettina, 52">
+              </div>
+              <p><span></span></p>
+              <p>... <i>Als ich über das Projekt „PHARMAZIEGASSE</i><i><sup>®</sup></i><i>“ erfahren habe, war ich
+                  begeistert und neugierig zugleich - wie wir Dänen halt sind – und habe mir gedacht: Das ist
+                  genau das, was ich brauche und bis jetzt noch nicht gefunden habe... Endlich gibt es einen
+                  unkomplizierten Weg meiner Haut etwas Gutes zu tun, verlässlich natürlich, ohne viel Firlefanz.
+                  Das mag ich!</i></p>
+              <p></p>
+              <h4 class="font-weight-bold">Bettina, 52</h4>
+              <h6 class="font-weight-bold my-3 text-muted">Immobilienmanagerin, Café Ingeborg</h6>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="testimonial">
+              <div class="avatar mx-auto mb-4"><img width="160px" height="160px"
+                  src="./Pharmaziegasse®_files/2.e0473847.jpg" class="rounded-circle img-fluid"
+                  alt="Katharina, 49"></div>
+              <p><span></span></p>
+              <p>... <i>Apropos Schönheit… mein Aussehen und vor allem meine Haut sind mir sehr wichtig. Als
+                  Ärztin lege ich besonderen Wert auf gesunde, natürliche und ehrliche Wirkstoffe und
+                  unkompliziert muss es sein. Auf das Programm von „PHARMAZIEGASSE</i><i><sup>®</sup></i><i>“ bin
+                  ich schon sehr gespannt, vor allem für meine sehr empfindliche Haut, die wirklich nicht alles
+                  verträgt, könnte das die Lösung sein… meine Erwartung sind sehr hoch.</i></p>
+              <p></p>
+              <h4 class="font-weight-bold">Katharina, 49</h4>
+              <h6 class="font-weight-bold my-3 text-muted">Zahnärztin</h6>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="testimonial">
+              <div class="avatar mx-auto mb-4"><img width="160px" height="160px"
+                  src="./Pharmaziegasse®_files/3.e4b45ac3.jpg" class="rounded-circle img-fluid" alt="Daniela, 52">
+              </div>
+              <p><span></span></p>
+              <p>... <i>Meine Haut ist nicht mega kompliziert, aber ich habe eine große Herausforderung, nämlich
+                  die Trockenheit. So heißt es für mich seit Jahren schon schmieren, schmieren, schmieren… aber in
+                  Wirklichkeit habe ich für mich das richtige noch nicht gefunden... Von
+                  „PHARMAZIEGASSE</i><i><sup>®</sup></i><i>“ erwarte ich mir all das und eine unkomplizierte,
+                  zeitsparende Online Bestellung mit rund um Service. Dann wäre ich schon super happy.</i></p>
+              <p></p>
+              <h4 class="font-weight-bold">Daniela, 52</h4>
+              <h6 class="font-weight-bold my-3 text-muted">Founder und Vorstandsvorsitzende Businessfrauencenter
+              </h6>
+            </div>
+          </div>
+          <div class="carousel-item">
+            <div class="testimonial">
+              <div class="avatar mx-auto mb-4"><img width="160px" height="160px"
+                  src="./Pharmaziegasse®_files/4.13bb17e7.jpg" class="rounded-circle img-fluid"
+                  alt="Viola mit Sohn Louis, 45"></div>
+              <p><span></span></p>
+              <p>... <i>Von „PHARMAZIEGASSE</i><i><sup>®</sup></i><i>“ erwarte ich mir insbesondere Hilfe gegen
+                  meine sich schon andeutenden Fältchen. Dass das gesamte Programm dann nur auf mich abgestimmt
+                  ist, imponiert mir und dass ich im Kosmetikladen auf der Suche nach dem richtigen Produkt nicht
+                  mehr herumirren muss, erleichtert mich. Online Beratung und Online bestellen ermöglicht mir,
+                  mehr Zeit mit meinen Kindern zu verbringen. Und das finde ich gut und meine Kinder sicherlich
+                  auch.</i></p>
+              <p></p>
+              <h4 class="font-weight-bold">Viola mit Sohn Louis, 45</h4>
+              <h6 class="font-weight-bold my-3 text-muted">Physiotherapeutin, Café Ingeborg</h6>
+            </div>
+          </div>
+        </div><a class="carousel-control-prev left carousel-control"
+          href="http://localhost:3000/?token=Pharmaziegasse-9020#customer-carousel" role="button"
+          data-slide="prev"><span class="icon-prev" aria-hidden="true"></span><span
+            class="sr-only">Previous</span></a><a class="carousel-control-next right carousel-control"
+          href="http://localhost:3000/?token=Pharmaziegasse-9020#customer-carousel" role="button"
+          data-slide="next"><span class="icon-next" aria-hidden="true"></span><span
+            class="sr-only">Next</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+{% endfor %}
+
+{% for s in page.sections %}
+{% if s.block_type == 's_services' %}
+<section id="pricing" style="background-color: rgb(239, 244, 248);">
+  <div class="container py-5 section-text-grey">
+    <h2 class="h1-responsive font-weight-bold mb-5">Investment in Ihre Schönheit</h2>
+    <div class="row">
+      <div class="col-md-6 m-auto mb-4">
+        <div class="card pricing-card pb-4">
+          <h3 class="text-uppercase font-weight-bold my-4">Mit Geldzurückgarantie im Testmonat</h3>
+          <div class="pricing-description p-4">
+            <p class="m-0"></p>
+            <p></p>
+            <hr>
+            <h4>Individuelles Gesichtspflegeprogramm</h4>
+            <ol>
+              <li>Morgenserum 30ml <b>€ 39,-</b></li>
+              <li>Abendserum 30m <b>€ 49,-</b></li>
+              <li>Creme 50ml <b>€ 34,-</b></li>
+            </ol>
+            <h4>Individuelles Analyseprogramm</h4>
+            <ol>
+              <li>30min Anamnesegespräch <b>€ 19,-</b></li>
+              <li>Persönlicher Beautyreport <b>€ 79,-</b></li>
+            </ol>
+            <p></p>
+            <hr>
+            <p></p>
+            <p></p>
+          </div>
+          <div class="card-body striped p-0">
+            <div class="py-4">
+              <p class="text-uppercase mb-0 pricetag">Preis</p>
+              <p class="text-muted mb-0">€ 220</p>
+            </div>
+            <hr class="mt-0"><button data-toggle="modal" data-target="#modalRegister"
+              class="btn btn-white btn-rounded font-weight-bold">Beautyprogramm starten</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% endif %}
+{% endfor %}
+
+{% for s in page.sections %}
+{% if s.block_type == 's_lab' %}
+<section id="lab" class="section-lightblue">
+    <div class="container py-5 text-left">
+        <h2 class="font-weight-bold">{{ s.value.lab_head }}</h2>
+        <div class="text-center my-5">{% image s.value.lab_image original draggable="false" class="img-fluid" %}</div>
+        <div class="row my-5">
+            <div class="col-md-6">
+                <div class="row h-100">
+                    <div class="col-12">
+                        <div class="lead">
+                            <p>{{ s.value.lab_lead |richtext}}</p>
+                        </div>
+                    </div>
+                    <div class="col-12"><a href="{{ s.value.lab_button.button_link }}" class="btn btn-outline-elegant btn-rounded font-weight-bold my-4">{{ l.value.lab_button }}</a></div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div>
+                    <p>{{ s.value.lab_paragraph|richtext }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+{% endfor %}
+
+{% for s in page.sections %}
+{% if s.block_type == 's_about' %}
+<section id="about" style="background-color: {{ s.value.about_background }};">
+    <div class="container py-5 text-left">
+        <h2 class="font-weight-bold">{{ s.value.about_head }}</h2>
+        <div class="row my-5">
+            <div class="col-md-6">{% image s.value.about_image original draggable="false" class="img-fluid" %}</div>
+            <div class="col-md-6">
+                <div>
+                    <p>{{ s.value.about_paragraph|richtext }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endif %}
+{% endfor %}
+
+{% for f in page.footers %}
+{% if f.block_type == 'f_info' %}
+<footer class="page-footer font-small lighten-5 py-4 " style="background-color: rgb(255, 255, 255);">
+  <div class="container text-center text-md-left">
+    <div class="row text-center text-md-left mt-3 pb-3 dark-grey-text">
+      <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3"><img class="img-fluid"
+          src="./Pharmaziegasse®_files/black.58fe2d77.png" alt="The Unique Story"></div>
+      <hr class="w-100 clearfix d-md-none">
+      <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mt-3">
+        <h6 class="text-uppercase mb-4 font-weight-bold">Anschrift</h6>
+        <p>Pharmaziegasse 5</p>
+        <p>9020 Klagenfurt</p>
+      </div>
+      <hr class="w-100 clearfix d-md-none">
+      <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">
+        <h6 class="text-uppercase mb-4 font-weight-bold">Kontakt</h6>
+        <p><i class="fas fa-phone mr-3"></i>+43 463 305001</p><a class="email-link"
+          href="mailto:office@pharmaziegasse.at"><i class="fas fa-envelope mr-3"></i>office@pharmaziegasse.at</a>
+      </div>
+      <hr class="w-100 clearfix d-md-none">
+      <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mt-3">
+        <p><a href="http://localhost:3000/about">Impressum</a></p>
+        <p><a href="http://localhost:3000/privacy">Datenschutz</a></p>
+        <ul class="list-unstyled list-inline">
+          <li class="list-inline-item"><a
+              href="https://www.facebook.com/Friends-of-Pharmaziegasse-309175709736059/" rel="noopener noreferrer"
+              target="_blank" class="mx-2"><i class="fab fa-facebook-f"></i></a></li>
+          <li class="list-inline-item"><a href="https://www.instagram.com/pharmaziegasse/"
+              rel="noopener noreferrer" target="_blank" class="mx-2"><i class="fab fa-instagram"></i></a></li>
+        </ul>
+      </div>
+    </div>
+    <hr>
+    <div class="row d-flex align-items-center dark-grey-text">
+      <div class="col-md-12">
+        <p class="text-center text-md-left">© 2018 - 2019 Copyright: Pharmaziegasse®</p>
+      </div>
+    </div>
+  </div>
+</footer>
+{% endif %}
+{% endfor %}
+
+<div class="modal fade" id="modalRegister" tabindex="-1" role="dialog" aria-labelledby="Registrieren"
+  aria-hidden="true" data-backdrop="true">
+  <div class="modal-dialog modal-lg modal-notify modal-info" role="document">
+    <div class="modal-content">
+      <div class="modal-body"><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+            aria-hidden="true" class="dark-text">×</span></button>
+        <div class="lead font-weight-bold text-center">Starten Sie mit Ihrem individuellen Beautyprogramm</div>
+        <hr>
+        <div class="register-form">
+          <div class="row">
+            <div class="col-md-7">
+              <div>
+                <div class="oAuth"><span style="transition: opacity 0.5s ease 0s;"><button type="button"
+                      class="btn-facebook kep-login-facebook kep-login-facebook-medium metro"><svg
+                        stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 448 512"
+                        height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                          d="M448 56.7v398.5c0 13.7-11.1 24.7-24.7 24.7H309.1V306.5h58.2l8.7-67.6h-67v-43.2c0-19.6 5.4-32.9 33.5-32.9h35.8v-60.5c-6.2-.8-27.4-2.7-52.2-2.7-51.6 0-87 31.5-87 89.4v49.9h-58.4v67.6h58.4V480H24.7C11.1 480 0 468.9 0 455.3V56.7C0 43.1 11.1 32 24.7 32h398.5c13.7 0 24.8 11.1 24.8 24.7z">
+                        </path>
+                      </svg>Weiter mit Facebook</button></span></div>
+                <div class="w-100">
+                  <div class="splitter my-4"><span class="or"><span class="or-text">oder</span></span></div>
+                </div>
+              </div>
+              <form id="form-reg" wtx-context="0486C437-FAC8-48BA-8297-F9EE092E3724">
+                <div class="input-grp"><i class="fas fa-phone"></i><input class="form-control my-3" type="text"
+                    name="phone" placeholder="Telefonnummer" value=""
+                    wtx-context="1A2AE0DC-B9B3-4951-8511-CEF7662E3CA3"></div>
+                <div>
+                  <div class="input-grp"><i class="far fa-envelope"></i><input class="form-control my-3"
+                      type="email" name="email" placeholder="E-Mail Adresse (optional)" value=""
+                      wtx-context="BEFB7BEC-455C-41CF-AA9F-19733FFF9628"></div>
+                  <div class="input-grp"><i class="far fa-user-circle"></i><input class="form-control my-3"
+                      type="text" name="prename" placeholder="Vorname" value=""
+                      wtx-context="6961C3FE-4F8F-434F-801B-AB7635DE4E31"></div>
+                  <div class="input-grp"><i class="far fa-user-circle"></i><input class="form-control my-3"
+                      type="text" name="surname" placeholder="Nachname" value=""
+                      wtx-context="1A3D324A-61DA-466F-8693-BC22362D2B93"></div>
+                </div>
+                <div class="text-left">
+                  <div class="form-check my-4"><input type="checkbox" name="newsletter" class="form-check-input"
+                      id="newsletter-942" wtx-context="18620FDA-87AF-4664-86B0-A33BF5169E96"><label
+                      class="form-check-label text-left" for="newsletter-942">
+                      <div>Halten Sie mich auf dem Laufenden (Newsletter)</div>
+                    </label></div>
+                  <div class="form-check"><input type="checkbox" name="gdpr" class="form-check-input"
+                      id="gdpr-472" wtx-context="7017C03A-E55E-458D-B9FB-FC38943AD9C4"><label
+                      class="form-check-label text-left" for="gdpr-472">
+                      <div>
+                        <p>Ich habe die <a href="http://localhost:3000/privaccy">Datenschutzerklärung</a> gelesen
+                          und bin daher damit einverstanden, dass die eingegebenen Daten für den Zweck der
+                          Kontaktaufnahme elektronisch gespeichert werden.</p>
+                      </div>
+                    </label></div>
+                </div>
+                <div class="text-center mt-4"></div><input class="btn btn-outline-elegant font-weight-bold"
+                  type="submit" value="Starten" wtx-context="7DF7E5A6-2A33-4F15-8D8B-DE02B6E155FA">
+              </form>
+            </div>
+            <div class="col-md-5 text-left">
+              <div class="alert alert-info register-info" role="alert"><i class="far fa-lightbulb fa-2x"></i>
+                <div class="mt-2 dark-grey-text">
+                  <p>Ihre Bedürfnisse sind uns wichtig! Bitte planen Sie etwas Zeit für unser Gespräch ein.</p>
+                  <p><br>Wir wollen in einem gemeinsamen Gespräch Ihre Bedürfnisse Ihrer Haut kennen lernen. Wir
+                    sprechen dabei über Ihre individuelle Haut- und Lebenssituation und tauschen Informationen
+                    aus, die für Sie und Ihre Hautpflege wichtig sind.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</main>
+    </div>
+    <script src="https://www.aichner-christian.com/mdb/js/jquery-3.3.1.min.js"></script>
+    <script src="https://www.aichner-christian.com/mdb/js/popper.min.js"></script>
+    <script src="https://www.aichner-christian.com/mdb/js/bootstrap.min.js"></script>
+    <script src="https://www.aichner-christian.com/mdb/js/mdb.min.js"></script>
+    <div class="hiddendiv common"></div>
+    <script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+    <script>// Animations initialization
+        new WOW().init();
+
+        $(document).ready(function () {
+            let hash = window.location.hash;
+            if (hash !== "") {
+                $("html,body").animate({
+                    scrollTop: $(hash).offset().top - 73.797
+                });
+            }
+
+
+            $(document).on("click", ".sscroll", function (e) {
+                let target = $(this).attr("href");
+                e.preventDefault();
+                $("html,body").animate(
+                    {
+                        scrollTop: $(target).offset().top - 73.797
+                    },
+                    800,
+                    "easeInOutQuart"
+                );
+            });
+
+            let loadDark = () => {
+                $('.asbest').attr('style', 'display: none !important;');
+                $('.graviola-container').attr('style', 'display: block !important;');
+                $('.hero-counter').attr('style', 'display: block !important;');
+                $('.navbar').removeClass("navbar-light");
+                $('.navbar').addClass("navbar-dark");
+                $('.navbar img').attr('style', 'filter: brightness(0) invert(1);');
+                $('.navbar .btn').removeClass('btn-outline-elegant');
+                $('.navbar .btn').addClass('btn-outline-white');
+            }
+
+            let loadLight = () => {
+                $('.asbest').attr('style', 'display: block !important;');
+                $('.graviola-container').attr('style', 'display: none !important;');
+                $('.hero-counter').attr('style', 'display: none !important;');
+                $('.navbar').removeClass("navbar-dark");
+                $('.navbar').addClass("navbar-light");
+                $('.navbar img').attr('style', 'filter: brightness(0) invert(0);');
+                $('.navbar .btn').removeClass('btn-outline-white');
+                $('.navbar .btn').addClass('btn-outline-elegant');
+            }
+
+            $(document).on("click", ".switch-mode", function (e) {
+                let state = $(this).is(':checked');
+                if (state === true) {
+                    //Dark mode - how we want it
+                    loadDark();
+                    toastr["success"]("Vorzeige Modus aktiviert.")
+                    Cookies.set('s_mode', '1');
+                } else {
+                    //Light mode
+                    loadLight();
+                    toastr["error"]("Vorzeige Modus deaktiviert.")
+                    Cookies.set('s_mode', '0');
+                }
+            });
+
+            //Modes
+            $('.asbest').ready(function () {
+                let mode = Cookies.get('s_mode');
+                if (mode === '0') {
+                    loadLight();
+                } else if (mode === '1') {
+                    loadDark();
+                }
+            })
+        });
+        // Tooltips Initialization
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })</script>
+</body>
+
+</html>

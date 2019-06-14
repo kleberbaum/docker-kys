@@ -24,8 +24,11 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 # Application definition
 
 INSTALLED_APPS = [
-    'esite.home',
+    'esite.core',
+    'esite.kisy',
     'esite.search',
+    'esite.api',
+    'esite.colorfield',
 
     'rest_framework',
     'graphene_django',
@@ -47,6 +50,7 @@ INSTALLED_APPS = [
     'wagtail.admin',
     'wagtail.contrib.modeladmin',
     'wagtail.contrib.routable_page',
+    'wagtail.contrib.styleguide',
     'wagtail.core',
 
     'django.contrib.admin',
@@ -109,6 +113,22 @@ DATABASES = {
 }
 
 
+GRAPHENE = {
+    'SCHEMA': 'esite.api.schema.schema',
+}
+
+GRAPHQL_API = {
+    'APPS': [
+        'kisy',
+    ],
+    'PREFIX': {
+    },
+    'URL_PREFIX': {
+
+    },
+    'RELAY': False,
+}
+
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
 
@@ -126,6 +146,8 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+AUTH_USER_MODEL = 'kisy.Customer'
 
 
 # Internationalization
