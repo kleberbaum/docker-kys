@@ -25,6 +25,7 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 INSTALLED_APPS = [
     'esite.core',
+    'esite.users',
     'esite.kisy',
     'esite.search',
     'esite.api',
@@ -75,6 +76,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'graphql_jwt.middleware.JSONWebTokenMiddleware',
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
@@ -129,6 +132,11 @@ GRAPHQL_API = {
     'RELAY': False,
 }
 
+AUTHENTICATION_BACKENDS = [
+    'graphql_jwt.backends.JSONWebTokenBackend',
+    'django.contrib.auth.backends.ModelBackend',
+]
+
 # Password validation
 # https://docs.djangoproject.com/en/2.1/ref/settings/#auth-password-validators
 
@@ -147,7 +155,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-AUTH_USER_MODEL = 'kisy.Customer'
+AUTH_USER_MODEL = 'users.Customer'
 
 
 # Internationalization

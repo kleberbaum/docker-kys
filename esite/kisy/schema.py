@@ -1,142 +1,107 @@
-from __future__ import unicode_literals
+from django.db.models import Q
+
 import graphene
-from django.db import models
 from graphene_django import DjangoObjectType
-from esite.home import graphene_wagtail
-from esite.home.models import HomePage, Button, User
-from graphene.types.generic import GenericScalar
-from .graphene_wagtail import DefaultStreamBlock, create_stream_field_type
+from graphql import GraphQLError
 
-class UserNode(DjangoObjectType):
+from esite.users.schema import UserType
+
+from .models import Link, Vote
+
+
+class LinkType(DjangoObjectType):
     class Meta:
-        model = User
-        
-class ButtonNode(DjangoObjectType):
+        model = Link
+
+
+class VoteType(DjangoObjectType):
     class Meta:
-        model = Button
+        model = Vote
 
-# Blocks
-class HeroBlock(DefaultStreamBlock):
+
+class Query(graphene.ObjectType):
+    links = graphene.List(
+        LinkType,
+        search=graphene.String(),
+        first=graphene.Int(),
+        skip=graphene.Int(),
+    )
+    votes = graphene.List(VoteType)
+
+    def resolve_links(self, info, search=None, first=None, skip=None, **kwargs):
+        qs = Link.objects.all()
+
+        if search:
+            filter = (
+                Q(url__icontains=search) |
+                Q(description__icontains=search)
+            )
+            qs = qs.filter(filter)
+
+        if skip:
+            qs = qs[skip::]
+
+        if first:
+            qs = qs[:first]
+
+        return qs
+
+    def resolve_votes(self, info, **kwargs):
+        return Vote.objects.all()
+
+
+class CreateLink(graphene.Mutation):
+    id = graphene.Int()
+    url = graphene.String()
+    description = graphene.String()
+    posted_by = graphene.Field(UserType)
+
+    class Arguments:
+        url = graphene.String()
+        description = graphene.String()
+
+    def mutate(self, info, url, description):
+        user = info.context.user
+        link = Link(
+            url=url,
+            description=description,
+            posted_by=user,
+        )
+        link.save()
+
+        return CreateLink(
+            id=link.id,
+            url=link.url,
+            description=link.description,
+            posted_by=link.posted_by,
+        )
+
+
+class CreateVote(graphene.Mutation):
+    user = graphene.Field(UserType)
+    link = graphene.Field(LinkType)
+
+    class Arguments:
+        link_id = graphene.Int()
+
+    def mutate(self, info, link_id):
+        user = info.context.user
+        if user.is_anonymous:
+            raise GraphQLError('You must be logged to vote!')
+
+        link = Link.objects.filter(id=link_id).first()
+        if not link:
+            raise Exception('Invalid Link!')
+
+        Vote.objects.create(
+            user=user,
+            link=link,
+        )
+
+        return CreateVote(user=user, link=link)
+
+
+class Mutation(graphene.ObjectType):
+    #create_link = CreateLink.Field()
+    #create_vote = CreateVote.Field()
     pass
-
-class SectionBlock(DefaultStreamBlock):
-    pass
-
-class FooterBlock(DefaultStreamBlock):
-    pass
-
-class ButtonBlock(graphene.ObjectType):
-    value = GenericScalar()
-    button = graphene.Field(ButtonNode)
-
-    def resolve_user(self, info):
-        return User.objects.get(id=self.value)
-
-class UserBlock(graphene.ObjectType):
-    value = GenericScalar()
-    user = graphene.Field(UserNode)
-
-    def resolve_user(self, info):
-        return User.objects.get(id=self.value)
-
-#class HeaderNode(DjangoObjectType):
-#
-#    (hero, resolve_hero) = create_stream_field_type(
-#            'hero',
-#            hero=HeroBlock,
-#            user=UserBlock,
-#            btn=ButtonBlock)
-
-# Blocks
-#class HeaderBlock(graphene.ObjectType):
-class HeaderBlock(DefaultStreamBlock):
-    pass
-    #value = graphene.Field(HeaderNode)
-
-# Objects
-class HomePageBody(graphene.Union):
-    class Meta:
-        types = (HeaderBlock, SectionBlock, FooterBlock, ButtonBlock, UserBlock)
-
-class HomePageNode(DjangoObjectType):
-
-    headers = graphene.List(HomePageBody)
-    sections = graphene.List(HomePageBody)
-    footers = graphene.List(HomePageBody)
-    
-    class Meta:
-        model = HomePage
-        only_fields = [
-            'id',
-            'title',
-            'city',
-            'zip_code',
-            'address',
-            'telephone',
-            'telefax',
-            'vat_number',
-            'tax_id',
-            'trade_register_number',
-            'court_of_registry',
-            'place_of_registry',
-            'trade_register_number',
-            'ownership',
-            'email',
-            'sociallinks',
-            'token',
-            'copyrightholder'
-        ]
-
-
-    def resolve_headers(self, info):
-        repr_headers = []
-        for block in self.headers.stream_data:
-            block_type = block.get('type')[0]
-            value = block.get('value')
-            if block_type == 'h':
-                repr_headers.append(HeaderBlock(value=value))
-        return repr_headers
-
-    def resolve_sections(self, info):
-        repr_sections = []
-        for block in self.sections.stream_data:
-            block_type = block.get('type')[0]
-            value = block.get('value')
-            if block_type == 's':
-                repr_sections.append(SectionBlock(value=value))
-        return repr_sections
-
-    def resolve_footers(self, info):
-        repr_footers = []
-        for block in self.footers.stream_data:
-            block_type = block.get('type')[0]
-            value = block.get('value')
-            if block_type == 'f':
-                repr_footers.append(FooterBlock(value=value))
-        return repr_footers
-
-#    (headers, resolve_headers) = create_stream_field_type(
-#            'headers',
-#            headers=HeaderBlock,
-#            sections=SectionBlock,
-#            footers=FooterBlock)
-#    
-#    (sections, resolve_sections) = create_stream_field_type(
-#            'sections',
-#            paragraph=HeaderBlock,
-#            sections=SectionBlock,
-#            footers=FooterBlock)
-#
-#    (footers, resolve_footers) = create_stream_field_type(
-#            'footers',
-#            headers=HeaderBlock,
-#            sections=SectionBlock,
-#            footers=FooterBlock)
-
-# Query
-class Query(graphene.AbstractType):
-    homepage = graphene.List(HomePageNode)
-
-    @graphene.resolve_only_args
-    def resolve_homepage(self):
-        return HomePage.objects.live()
