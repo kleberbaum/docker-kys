@@ -1,12 +1,12 @@
 #!/bin/sh
 set -e
 
-until psql $DATABASE_URL -c '\l'; do
-  >&2 echo "Postgres is unavailable - sleeping"
-  sleep 1
-done
-
->&2 echo "Postgres is up - continuing"
+#until psql $DATABASE_URL -c '\l'; do
+#  >&2 echo "Postgres is unavailable - sleeping"
+#  sleep 1
+#done
+#
+#>&2 echo "Postgres is up - continuing"
 
 # Check if MariaDB is up and accepting connections.
 #HOSTNAME=$(/venv/bin/python -c "from urllib.parse import urlparse; o = urlparse('$DATABASE_URL'); print(o.hostname);")
