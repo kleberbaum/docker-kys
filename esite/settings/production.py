@@ -31,9 +31,9 @@ ALLOWED_HOSTS = os.getenv('DJANGO_ALLOWED_HOSTS', '*').split(';')
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 # BASE_URL required for notification emails
-BASE_URL = 'https://pharmaziegasse.at'
+BASE_URL = 'https://erebos.xyz'
 
-CSRF_TRUSTED_ORIGINS = ['pharmaziegasse.at']
+CSRF_TRUSTED_ORIGINS = ['erebos.xyz']
 
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
