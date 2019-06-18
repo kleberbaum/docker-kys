@@ -48,6 +48,7 @@ RUN echo "## Installing base ##" && \
 	    git@main \
 		bash@main \
 		mysql-client@main \
+		postgresql-client@main \
         tini@community \
   	\
 	&& python -m venv /venv \
@@ -64,8 +65,6 @@ RUN echo "## Installing base ##" && \
 	&& apk del .build-deps \
 	&& rm -rf /tmp/* /var/tmp/* /var/cache/apk/* /var/cache/distfiles/*
 
-#RUN apk add --no-cache postgresql-client
-
 EXPOSE 8000
 
 VOLUME /code/media
@@ -73,8 +72,8 @@ VOLUME /code/media
 ADD . /code/
 
 # Call collectstatic with dummy environment variables:
-#RUN DATABASE_URL=postgres://none REDIS_URL=none /venv/bin/python manage.py collectstatic --noinput
-RUN DATABASE_URL=mysql://none REDIS_URL=none /venv/bin/python manage.py collectstatic --noinput
+RUN DATABASE_URL=postgres://none REDIS_URL=none /venv/bin/python manage.py collectstatic --noinput
+#RUN DATABASE_URL=mysql://none REDIS_URL=none /venv/bin/python manage.py collectstatic --noinput
 
 # place init and
 # make sure static files are writable by uWSGI process
