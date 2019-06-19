@@ -12,14 +12,7 @@ from wagtail.core import blocks
 from wagtail.admin.edit_handlers import TabbedInterface, ObjectList, InlinePanel, StreamFieldPanel, MultiFieldPanel, FieldPanel
 from wagtail.images.blocks import ImageChooserBlock
 
-#class Company(models.Model):
-#  companyID = models.AutoField(primary_key=True)
-#  companyName = models.CharField(null=True, blank=False,max_length=128)
-#  companyVAT = JSONField()
-#  companyAddress = models.CharField(null=True, blank=False, max_length=60)
-#  companyZIP = models.CharField(null=True, blank=False, max_length=12)
-#  comapnyCity = models.CharField(null=True, blank=False,max_length=60)
-#  companyRating = JSONField()
+from esite.company.models import Company
 
 class Customer(AbstractUser):
   customerID = models.AutoField(primary_key=True)
@@ -34,7 +27,7 @@ class Customer(AbstractUser):
   zipCode = models.CharField(null=True, blank=False, max_length=12)
   city = models.CharField(null=True, blank=False,max_length=60)
   country = models.CharField(null=True, blank=False,max_length=2)
-  #company = models.ForeignKey(Company, on_delete=models.CASCADE)
+  company = models.ForeignKey(Company, null=True, on_delete=models.CASCADE)
   personalisation = JSONField(null=True, blank=False)
   newsletter = models.BooleanField(null=True, blank=False)
   gdpr = models.BooleanField(null=True, blank=False)

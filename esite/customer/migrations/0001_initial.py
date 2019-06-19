@@ -52,8 +52,8 @@ class Migration(migrations.Migration):
                 ('user_permissions', models.ManyToManyField(blank=True, help_text='Specific permissions for this user.', related_name='user_set', related_query_name='user', to='auth.Permission', verbose_name='user permissions')),
             ],
             options={
-                'verbose_name': 'user',
-                'verbose_name_plural': 'users',
+                'verbose_name': 'customer',
+                'verbose_name_plural': 'customers',
                 'abstract': False,
             },
             managers=[
@@ -93,7 +93,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='item',
             name='order',
-            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='users.Order'),
+            field=models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='customer.Order'),
         ),
         migrations.AddField(
             model_name='item',
@@ -103,6 +103,6 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='invoice',
             name='order',
-            field=models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to='users.Order'),
+            field=models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to='customer.Order'),
         ),
     ]

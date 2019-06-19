@@ -25,7 +25,8 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 
 INSTALLED_APPS = [
     'esite.core',
-    'esite.users',
+    'esite.customer',
+    'esite.company',
     'esite.kisy',
     'esite.search',
     'esite.api',
@@ -156,7 +157,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-AUTH_USER_MODEL = 'users.Customer'
+AUTH_USER_MODEL = 'customer.Customer'
 
 
 # Internationalization
