@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'esite.api',
     'esite.colorfield',
 
+    'django_filters',
     'rest_framework',
     'graphene_django',
     'corsheaders',
