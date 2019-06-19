@@ -29,7 +29,7 @@ from .types import (  # noqa: E402
 import graphql_jwt
 import esite.kisy.schema_relay
 import esite.kisy.schema
-import esite.users.schema
+import esite.customer.schema
 
 # api version
 GRAPHQL_API_FORMAT = (0, 2, 1)
@@ -46,7 +46,7 @@ SnippetsQueryMixin_ = SnippetsQueryMixin()  # type: Any
 
 
 class Query(esite.kisy.schema.Query,
-            esite.users.schema.Query,
+            esite.customer.schema.Query,
             esite.kisy.schema_relay.RelayQuery,
             graphene.ObjectType,
             #AuthQueryMixin_,
@@ -81,7 +81,7 @@ class Query(esite.kisy.schema.Query,
 #                 mutation_parameters()
 #                 )
 
-class Mutations(esite.kisy.schema.Mutation, esite.users.schema.Mutation, esite.kisy.schema_relay.RelayMutation, graphene.ObjectType):
+class Mutations(esite.kisy.schema.Mutation, esite.customer.schema.Mutation, esite.kisy.schema_relay.RelayMutation, graphene.ObjectType):
 
     token_auth = graphql_jwt.ObtainJSONWebToken.Field()
     verify_token = graphql_jwt.Verify.Field()

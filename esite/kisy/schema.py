@@ -4,7 +4,7 @@ import graphene
 from graphene_django import DjangoObjectType
 from graphql import GraphQLError
 
-from esite.users.schema import UserType
+from esite.customer.schema import UserType
 
 from .models import Link, Vote
 
