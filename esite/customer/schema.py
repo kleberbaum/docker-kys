@@ -24,11 +24,11 @@ class CreateUser(graphene.Mutation):
             username=username,
             email=email,
         )
-        if info.context.user.is_anonymous:
-            raise GraphQLError('You must be logged to create a user')
+        #if info.context.user.is_anonymous:
+        #    raise GraphQLError('You must be logged to create a user')
 
-        if not info.context.user.is_superuser:
-            raise GraphQLError('You must be superuser to create a user')
+        #if not info.context.user.is_superuser:
+        #    raise GraphQLError('You must be superuser to create a user')
 
         user.set_password(password)
         user.save()
