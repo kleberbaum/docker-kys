@@ -7,4 +7,4 @@ graphene-django==2.2
 graphene_django_optimizer==0.3.6
 django-cors-headers==2.4.0
 django-graphql-jwt==0.2.1
-django-filter==2.1.0
+django-filter==2.4.0
